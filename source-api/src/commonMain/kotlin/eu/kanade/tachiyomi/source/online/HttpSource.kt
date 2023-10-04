@@ -171,6 +171,20 @@ abstract class HttpSource : CatalogueSource {
     protected abstract fun latestUpdatesParse(response: Response): MangasPage
 
     /**
+     * Returns an observable with the details for a manga. Normally it's not needed to
+     * override this method.
+     *
+     * @param manga the manga to be updated.
+     */
+    fun fetchMangaDetailsFromUrl(url: String): Observable<SManga> {
+        return client.newCall(mangaDetailsFromLinkRequest(url))
+            .asObservableSuccess()
+            .map { response ->
+                mangaDetailsParse(response).apply { initialized = true }
+            }
+    }
+
+    /**
      * Returns an observable with the updated details for a manga. Normally it's not needed to
      * override this method.
      *
@@ -193,6 +207,13 @@ abstract class HttpSource : CatalogueSource {
     open fun mangaDetailsRequest(manga: SManga): Request {
         return GET(baseUrl + manga.url, headers)
     }
+
+    /**
+     * Returns the request for the details of a manga.
+     *
+     * @param manga the manga to be updated.
+     */
+    protected abstract fun mangaDetailsFromLinkRequest(url: String): Request
 
     /**
      * Parses the response from the site and returns the details of a manga.

@@ -7,6 +7,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import eu.kanade.domain.base.BasePreferences
+import eu.kanade.domain.chapter.interactor.SyncChaptersWithSource
 import eu.kanade.domain.chapter.model.toDbChapter
 import eu.kanade.domain.manga.interactor.SetMangaViewerFlags
 import eu.kanade.domain.manga.model.orientationType
@@ -68,6 +69,7 @@ import tachiyomi.domain.history.interactor.GetNextChapters
 import tachiyomi.domain.history.interactor.UpsertHistory
 import tachiyomi.domain.history.model.HistoryUpdate
 import tachiyomi.domain.manga.interactor.GetManga
+import tachiyomi.domain.manga.interactor.NetworkToLocalManga
 import tachiyomi.domain.manga.model.Manga
 import tachiyomi.domain.source.service.SourceManager
 import tachiyomi.source.local.isLocal
@@ -96,6 +98,8 @@ class ReaderViewModel(
     private val upsertHistory: UpsertHistory = Injekt.get(),
     private val updateChapter: UpdateChapter = Injekt.get(),
     private val setMangaViewerFlags: SetMangaViewerFlags = Injekt.get(),
+    private val syncChaptersWithSource: SyncChaptersWithSource = Injekt.get(),
+
 ) : ViewModel() {
 
     private val mutableState = MutableStateFlow(State())
@@ -137,7 +141,15 @@ class ReaderViewModel(
      */
     private val chapterList by lazy {
         val manga = manga!!
-        val chapters = runBlocking { getChapterByMangaId.await(manga.id) }
+        val chapters = runBlocking {
+            getChapterByMangaId.await(manga.id).ifEmpty {
+                syncChaptersWithSource.await(
+                    emptyList(),
+                    manga,
+                    sourceManager.getOrStub(manga.source),
+                )
+            }
+        }
 
         val selectedChapter = chapters.find { it.id == chapterId }
             ?: error("Requested chapter of id $chapterId not found in chapter list")

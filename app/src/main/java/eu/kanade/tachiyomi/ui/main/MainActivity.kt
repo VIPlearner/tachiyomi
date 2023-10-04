@@ -51,6 +51,7 @@ import cafe.adriel.voyager.navigator.NavigatorDisposeBehavior
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import eu.kanade.domain.base.BasePreferences
+import eu.kanade.domain.manga.model.toDomainManga
 import eu.kanade.domain.source.service.SourcePreferences
 import eu.kanade.domain.ui.UiPreferences
 import eu.kanade.presentation.components.AppStateBanners
@@ -68,16 +69,20 @@ import eu.kanade.tachiyomi.data.notification.NotificationReceiver
 import eu.kanade.tachiyomi.data.updater.AppUpdateChecker
 import eu.kanade.tachiyomi.data.updater.RELEASE_URL
 import eu.kanade.tachiyomi.extension.api.ExtensionGithubApi
+import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.ui.base.activity.BaseActivity
 import eu.kanade.tachiyomi.ui.browse.source.browse.BrowseSourceScreen
 import eu.kanade.tachiyomi.ui.browse.source.globalsearch.GlobalSearchScreen
 import eu.kanade.tachiyomi.ui.home.HomeScreen
 import eu.kanade.tachiyomi.ui.manga.MangaScreen
 import eu.kanade.tachiyomi.ui.more.NewUpdateScreen
+import eu.kanade.tachiyomi.ui.reader.ReaderActivity
+import eu.kanade.tachiyomi.util.awaitSingle
 import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.system.isNavigationBarNeedsScrim
 import eu.kanade.tachiyomi.util.system.openInBrowser
 import eu.kanade.tachiyomi.util.view.setComposeContent
+import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -90,7 +95,10 @@ import logcat.LogPriority
 import tachiyomi.core.Constants
 import tachiyomi.core.util.system.logcat
 import tachiyomi.domain.library.service.LibraryPreferences
+import tachiyomi.domain.manga.interactor.GetManga
+import tachiyomi.domain.manga.interactor.NetworkToLocalManga
 import tachiyomi.domain.release.interactor.GetApplicationRelease
+import tachiyomi.domain.source.service.SourceManager
 import tachiyomi.presentation.core.components.material.Scaffold
 import tachiyomi.presentation.core.util.collectAsState
 import uy.kohesive.injekt.Injekt
@@ -107,6 +115,9 @@ class MainActivity : BaseActivity() {
 
     private val downloadCache: DownloadCache by injectLazy()
     private val chapterCache: ChapterCache by injectLazy()
+
+    private val sourceManager: SourceManager by injectLazy()
+    private val networkToLocalManga: NetworkToLocalManga by injectLazy()
 
     // To be checked by splash screen. If true then splash screen will be removed.
     var ready = false
@@ -422,6 +433,44 @@ class MainActivity : BaseActivity() {
                 }
                 null
             }
+            INTENT_OPEN_MANGA -> {
+                val sourceId = intent.getLongExtra(INTENT_MANGA_SOURCE, -1L)
+                val mangaUrl = intent.getStringExtra(INTENT_MANGA_URL)
+                if (sourceId == -1L || mangaUrl.isNullOrBlank()) return false
+
+                async{// load manga from source using Url
+                    val source = sourceManager.getOrStub(sourceId) as? HttpSource ?: return@async
+                    val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl).awaitSingle()
+
+                    // save manga to db
+                    val manga = networkToLocalManga.await(networkManga.toDomainManga(source.id))
+                    navigator.popUntilRoot()
+                    navigator.push(MangaScreen(manga.id, true))
+                }.await()
+                null
+            }
+            INTENT_OPEN_CHAPTER -> {
+                val sourceId = intent.getLongExtra(INTENT_MANGA_SOURCE, -1L)
+                val mangaUrl = intent.getStringExtra(INTENT_MANGA_URL)
+                val chapterId = intent.getLongExtra(INTENT_MANGA_CHAPTER, -1L)
+                if (sourceId == -1L || chapterId == -1L || mangaUrl.isNullOrBlank()) return false
+
+                async{// load manga from source using Url
+                    val source = sourceManager.getOrStub(sourceId) as? HttpSource ?: return@async
+                    val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl).awaitSingle()
+
+                    // save manga to db
+                    val manga = networkToLocalManga.await(networkManga.toDomainManga(source.id))
+                    startActivity(
+                        ReaderActivity.newIntent(
+                            context = this@MainActivity,
+                            mangaId = manga.id,
+                            chapterId = chapterId,
+                        ),
+                    )
+                }.await()
+                null
+            }
             else -> return false
         }
 
@@ -442,5 +491,11 @@ class MainActivity : BaseActivity() {
         const val INTENT_SEARCH = "eu.kanade.tachiyomi.SEARCH"
         const val INTENT_SEARCH_QUERY = "query"
         const val INTENT_SEARCH_FILTER = "filter"
+
+        const val INTENT_OPEN_MANGA = "eu.kanade.tachiyomi.OPEN_MANGA"
+        const val INTENT_OPEN_CHAPTER = "eu.kanade.tachiyomi.OPEN_CHAPTER"
+        const val INTENT_MANGA_URL = "mangaUrl"
+        const val INTENT_MANGA_SOURCE = "mangaSource"
+        const val INTENT_MANGA_CHAPTER = "mangaChapter"
     }
 }
