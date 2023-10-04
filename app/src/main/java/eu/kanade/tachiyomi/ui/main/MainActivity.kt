@@ -82,7 +82,6 @@ import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.system.isNavigationBarNeedsScrim
 import eu.kanade.tachiyomi.util.system.openInBrowser
 import eu.kanade.tachiyomi.util.view.setComposeContent
-import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -95,7 +94,6 @@ import logcat.LogPriority
 import tachiyomi.core.Constants
 import tachiyomi.core.util.system.logcat
 import tachiyomi.domain.library.service.LibraryPreferences
-import tachiyomi.domain.manga.interactor.GetManga
 import tachiyomi.domain.manga.interactor.NetworkToLocalManga
 import tachiyomi.domain.release.interactor.GetApplicationRelease
 import tachiyomi.domain.source.service.SourceManager
@@ -391,7 +389,7 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun handleIntentAction(intent: Intent, navigator: Navigator): Boolean {
+    private suspend fun handleIntentAction(intent: Intent, navigator: Navigator): Boolean {
         val notificationId = intent.getIntExtra("notificationId", -1)
         if (notificationId > -1) {
             NotificationReceiver.dismissNotification(applicationContext, notificationId, intent.getIntExtra("groupId", 0))
@@ -438,15 +436,13 @@ class MainActivity : BaseActivity() {
                 val mangaUrl = intent.getStringExtra(INTENT_MANGA_URL)
                 if (sourceId == -1L || mangaUrl.isNullOrBlank()) return false
 
-                async{// load manga from source using Url
-                    val source = sourceManager.getOrStub(sourceId) as? HttpSource ?: return@async
-                    val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl).awaitSingle()
+                val source = sourceManager.getOrStub(sourceId) as? HttpSource ?: return false
+                val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl).awaitSingle()
 
-                    // save manga to db
-                    val manga = networkToLocalManga.await(networkManga.toDomainManga(source.id))
-                    navigator.popUntilRoot()
-                    navigator.push(MangaScreen(manga.id, true))
-                }.await()
+                // save manga to db
+                val manga = networkToLocalManga.await(networkManga.toDomainManga(source.id))
+                navigator.popUntilRoot()
+                navigator.push(MangaScreen(manga.id, true))
                 null
             }
             INTENT_OPEN_CHAPTER -> {
@@ -455,20 +451,18 @@ class MainActivity : BaseActivity() {
                 val chapterId = intent.getLongExtra(INTENT_MANGA_CHAPTER, -1L)
                 if (sourceId == -1L || chapterId == -1L || mangaUrl.isNullOrBlank()) return false
 
-                async{// load manga from source using Url
-                    val source = sourceManager.getOrStub(sourceId) as? HttpSource ?: return@async
-                    val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl).awaitSingle()
+                val source = sourceManager.getOrStub(sourceId) as? HttpSource ?: return false
+                val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl).awaitSingle()
 
-                    // save manga to db
-                    val manga = networkToLocalManga.await(networkManga.toDomainManga(source.id))
-                    startActivity(
-                        ReaderActivity.newIntent(
-                            context = this@MainActivity,
-                            mangaId = manga.id,
-                            chapterId = chapterId,
-                        ),
-                    )
-                }.await()
+                // save manga to db
+                val manga = networkToLocalManga.await(networkManga.toDomainManga(source.id))
+                startActivity(
+                    ReaderActivity.newIntent(
+                        context = this@MainActivity,
+                        mangaId = manga.id,
+                        chapterId = chapterId,
+                    ),
+                )
                 null
             }
             else -> return false
