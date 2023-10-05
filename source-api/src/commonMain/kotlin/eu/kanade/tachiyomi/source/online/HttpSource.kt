@@ -176,12 +176,12 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to be updated.
      */
-    fun fetchMangaDetailsFromUrl(url: String): Observable<SManga> {
+    suspend fun fetchMangaDetailsFromUrl(url: String): SManga {
         return client.newCall(mangaDetailsFromLinkRequest(url))
             .asObservableSuccess()
             .map { response ->
                 mangaDetailsParse(response).apply { initialized = true }
-            }
+            }.awaitSingle()
     }
 
     /**

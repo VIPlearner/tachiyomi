@@ -437,7 +437,7 @@ class MainActivity : BaseActivity() {
                 if (sourceId == -1L || mangaUrl.isNullOrBlank()) return false
 
                 val source = sourceManager.getOrStub(sourceId) as? HttpSource ?: return false
-                val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl).awaitSingle()
+                val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl)
 
                 // save manga to db
                 val manga = networkToLocalManga.await(networkManga.toDomainManga(source.id))
@@ -452,7 +452,7 @@ class MainActivity : BaseActivity() {
                 if (sourceId == -1L || chapterId == -1L || mangaUrl.isNullOrBlank()) return false
 
                 val source = sourceManager.getOrStub(sourceId) as? HttpSource ?: return false
-                val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl).awaitSingle()
+                val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl)
 
                 // save manga to db
                 val manga = networkToLocalManga.await(networkManga.toDomainManga(source.id))
