@@ -74,11 +74,11 @@ import eu.kanade.tachiyomi.ui.base.activity.BaseActivity
 import eu.kanade.tachiyomi.ui.browse.source.browse.BrowseSourceScreen
 import eu.kanade.tachiyomi.ui.browse.source.globalsearch.GlobalSearchScreen
 import eu.kanade.tachiyomi.ui.deeplink.DeepLinkScreen
+import eu.kanade.tachiyomi.ui.deeplink.DeepLinkType
 import eu.kanade.tachiyomi.ui.home.HomeScreen
 import eu.kanade.tachiyomi.ui.manga.MangaScreen
 import eu.kanade.tachiyomi.ui.more.NewUpdateScreen
 import eu.kanade.tachiyomi.ui.reader.ReaderActivity
-import eu.kanade.tachiyomi.util.awaitSingle
 import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.system.isNavigationBarNeedsScrim
 import eu.kanade.tachiyomi.util.system.openInBrowser
@@ -390,7 +390,7 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private suspend fun handleIntentAction(intent: Intent, navigator: Navigator): Boolean {
+    private fun handleIntentAction(intent: Intent, navigator: Navigator): Boolean {
         val notificationId = intent.getIntExtra("notificationId", -1)
         if (notificationId > -1) {
             NotificationReceiver.dismissNotification(applicationContext, notificationId, intent.getIntExtra("groupId", 0))
@@ -419,7 +419,7 @@ class MainActivity : BaseActivity() {
                 val query = intent.getStringExtra(SearchManager.QUERY) ?: intent.getStringExtra(Intent.EXTRA_TEXT)
                 if (!query.isNullOrEmpty()) {
                     navigator.popUntilRoot()
-                    navigator.push(DeepLinkScreen(query))
+                    navigator.push(DeepLinkScreen(DeepLinkType.Search(query)))
                 }
                 null
             }
@@ -436,14 +436,8 @@ class MainActivity : BaseActivity() {
                 val sourceId = intent.getLongExtra(INTENT_MANGA_SOURCE, -1L)
                 val mangaUrl = intent.getStringExtra(INTENT_MANGA_URL)
                 if (sourceId == -1L || mangaUrl.isNullOrBlank()) return false
-
-                val source = sourceManager.getOrStub(sourceId) as? HttpSource ?: return false
-                val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl)
-
-                // save manga to db
-                val manga = networkToLocalManga.await(networkManga.toDomainManga(source.id))
                 navigator.popUntilRoot()
-                navigator.push(MangaScreen(manga.id, true))
+                navigator.push(DeepLinkScreen(DeepLinkType.OpenManga(sourceId, mangaUrl)))
                 null
             }
             INTENT_OPEN_CHAPTER -> {
@@ -451,19 +445,8 @@ class MainActivity : BaseActivity() {
                 val mangaUrl = intent.getStringExtra(INTENT_MANGA_URL)
                 val chapterId = intent.getLongExtra(INTENT_MANGA_CHAPTER, -1L)
                 if (sourceId == -1L || chapterId == -1L || mangaUrl.isNullOrBlank()) return false
-
-                val source = sourceManager.getOrStub(sourceId) as? HttpSource ?: return false
-                val networkManga = source.fetchMangaDetailsFromUrl(mangaUrl)
-
-                // save manga to db
-                val manga = networkToLocalManga.await(networkManga.toDomainManga(source.id))
-                startActivity(
-                    ReaderActivity.newIntent(
-                        context = this@MainActivity,
-                        mangaId = manga.id,
-                        chapterId = chapterId,
-                    ),
-                )
+                navigator.popUntilRoot()
+                navigator.push(DeepLinkScreen(DeepLinkType.OpenChapter(sourceId, mangaUrl, chapterId)))
                 null
             }
             else -> return false
