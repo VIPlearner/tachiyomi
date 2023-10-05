@@ -15,7 +15,7 @@ import eu.kanade.presentation.browse.MigrateSourceScreen
 import eu.kanade.presentation.components.AppBar
 import eu.kanade.presentation.components.TabContent
 import eu.kanade.tachiyomi.R
-import eu.kanade.tachiyomi.ui.browse.migration.manga.MigrationMangaScreen
+import eu.kanade.tachiyomi.ui.browse.migration.manga.MigrateMangaScreen
 
 @Composable
 fun Screen.migrateSourceTab(): TabContent {
@@ -31,7 +31,7 @@ fun Screen.migrateSourceTab(): TabContent {
                 title = stringResource(R.string.migration_help_guide),
                 icon = Icons.Outlined.HelpOutline,
                 onClick = {
-                    uriHandler.openUri("https://tachiyomi.org/help/guides/source-migration/")
+                    uriHandler.openUri("https://tachiyomi.org/docs/guides/source-migration")
                 },
             ),
         ),
@@ -40,7 +40,7 @@ fun Screen.migrateSourceTab(): TabContent {
                 state = state,
                 contentPadding = contentPadding,
                 onClickItem = { source ->
-                    navigator.push(MigrationMangaScreen(source.id))
+                    navigator.push(MigrateMangaScreen(source.id))
                 },
                 onToggleSortingDirection = screenModel::toggleSortingDirection,
                 onToggleSortingMode = screenModel::toggleSortingMode,

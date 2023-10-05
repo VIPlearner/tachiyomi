@@ -31,7 +31,11 @@ class CloudflareInterceptor(
         return response.code in ERROR_CODES && response.header("Server") in SERVER_CHECK
     }
 
-    override fun intercept(chain: Interceptor.Chain, request: Request, response: Response): Response {
+    override fun intercept(
+        chain: Interceptor.Chain,
+        request: Request,
+        response: Response,
+    ): Response {
         try {
             response.close()
             cookieManager.remove(request.url, COOKIE_NAMES, 0)
@@ -44,7 +48,7 @@ class CloudflareInterceptor(
         // Because OkHttp's enqueue only handles IOExceptions, wrap the exception so that
         // we don't crash the entire app
         catch (e: CloudflareBypassException) {
-            throw IOException(context.getString(R.string.information_cloudflare_bypass_failure))
+            throw IOException(context.getString(R.string.information_cloudflare_bypass_failure), e)
         } catch (e: Exception) {
             throw IOException(e)
         }

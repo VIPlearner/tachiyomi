@@ -4,15 +4,15 @@ import android.graphics.Color
 import androidx.annotation.StringRes
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.models.Track
-import eu.kanade.tachiyomi.data.track.DeletableTrackService
-import eu.kanade.tachiyomi.data.track.TrackService
+import eu.kanade.tachiyomi.data.track.DeletableTracker
+import eu.kanade.tachiyomi.data.track.Tracker
 import eu.kanade.tachiyomi.data.track.model.TrackSearch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import uy.kohesive.injekt.injectLazy
 import java.text.DecimalFormat
 
-class Kitsu(id: Long) : TrackService(id), DeletableTrackService {
+class Kitsu(id: Long) : Tracker(id, "Kitsu"), DeletableTracker {
 
     companion object {
         const val READING = 1
@@ -21,9 +21,6 @@ class Kitsu(id: Long) : TrackService(id), DeletableTrackService {
         const val DROPPED = 4
         const val PLAN_TO_READ = 5
     }
-
-    @StringRes
-    override fun nameRes() = R.string.tracker_kitsu
 
     override val supportsReadingDates: Boolean = true
 

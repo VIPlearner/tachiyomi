@@ -13,8 +13,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.compose.ui.unit.dp
 import eu.kanade.domain.track.service.TrackPreferences
-import eu.kanade.domain.ui.UiPreferences
-import eu.kanade.presentation.more.settings.widget.AppThemePreferenceWidget
 import eu.kanade.presentation.more.settings.widget.EditTextPreferenceWidget
 import eu.kanade.presentation.more.settings.widget.InfoWidget
 import eu.kanade.presentation.more.settings.widget.ListPreferenceWidget
@@ -158,30 +156,23 @@ internal fun PreferenceItem(
                     },
                 )
             }
-            is Preference.PreferenceItem.AppThemePreference -> {
-                val value by item.pref.collectAsState()
-                val amoled by Injekt.get<UiPreferences>().themeDarkAmoled().collectAsState()
-                AppThemePreferenceWidget(
-                    title = item.title,
-                    value = value,
-                    amoled = amoled,
-                    onItemClick = { scope.launch { item.pref.set(it) } },
-                )
-            }
-            is Preference.PreferenceItem.TrackingPreference -> {
+            is Preference.PreferenceItem.TrackerPreference -> {
                 val uName by Injekt.get<PreferenceStore>()
-                    .getString(TrackPreferences.trackUsername(item.service.id))
+                    .getString(TrackPreferences.trackUsername(item.tracker.id))
                     .collectAsState()
-                item.service.run {
+                item.tracker.run {
                     TrackingPreferenceWidget(
-                        service = this,
+                        tracker = this,
                         checked = uName.isNotEmpty(),
-                        onClick = { if (isLogged) item.logout() else item.login() },
+                        onClick = { if (isLoggedIn) item.logout() else item.login() },
                     )
                 }
             }
             is Preference.PreferenceItem.InfoPreference -> {
                 InfoWidget(text = item.title)
+            }
+            is Preference.PreferenceItem.CustomPreference -> {
+                item.content(item)
             }
         }
     }

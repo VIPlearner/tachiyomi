@@ -97,9 +97,9 @@
     <string name="ext_untrusted">Μη αξιόπιστο</string>
     <string name="ext_uninstall">Απεγκατάσταση</string>
     <string name="untrusted_extension">Μη αξιόπιστη επέκταση</string>
-    <string name="untrusted_extension_message">Αυτή η επέκταση υπογράφηκε με μη αξιόπιστο πιστοποιητικό και δεν ενεργοποιήθηκε.
+    <string name="untrusted_extension_message">Αυτή η επέκταση υπογράφηκε με αναξιόπιστο πιστοποιητικό και δεν ενεργοποιήθηκε.
 \n
-\nΜια κακόβουλη επέκταση θα μπορούσε να διαβάσει τα διαπιστευτήρια σύνδεσης που είναι αποθηκευμένα στο Tachiyomi ή να εκτελέσει αυθαίρετο κώδικα.
+\nΜια κακόβουλη επέκταση θα μπορούσε να διαβάσει τυχόν αποθηκευμένα διαπιστευτήρια σύνδεσης ή να εκτελέσει αυθαίρετο κώδικα.
 \n
 \nΕμπιστεύοντας αυτό το πιστοποιητικό αποδέχεστε αυτούς τους κινδύνους.</string>
     <string name="pref_fullscreen">Πλήρης οθόνη</string>
@@ -137,7 +137,7 @@
     <string name="double_tap_anim_speed_0">Χωρίς κίνηση</string>
     <string name="double_tap_anim_speed_normal">Κανονική</string>
     <string name="double_tap_anim_speed_fast">Γρήγορη</string>
-    <string name="pref_rotation_type">Προεπιλεγμένος τύπος περιστροφής</string>
+    <string name="pref_rotation_type">Προεπιλεγμένη περιστροφή</string>
     <string name="rotation_free">Ελεύθερο</string>
     <string name="rotation_force_portrait">Κλειδωμένο κατακόρυφα</string>
     <string name="rotation_force_landscape">Κλειδωμένο οριζόντια</string>
@@ -302,13 +302,12 @@
     <string name="last_used_source">Χρησιμοποιήθηκε τελευταία</string>
     <string name="add_tracking">Προσθήκη tracking</string>
     <string name="pinned_sources">Καρφιτσωμένα</string>
-    <string name="confirm_exit">Πατήστε ξανά για έξοδο</string>
     <string name="restore_duration">%02d λεπτά, %02d δευτερόλεπτα</string>
     <string name="action_select_inverse">Επιλογή αντίστροφου</string>
     <string name="channel_ext_updates">Ενημερώσεις επεκτάσεων</string>
     <string name="channel_new_chapters">Ενημερώσεις κεφαλαίων</string>
     <string name="information_webview_outdated">Παρακαλώ ενημερώστε την εφαρμογή WebView για καλύτερη συμβατότητα</string>
-    <string name="information_webview_required">Το WebView απαιτείται για το Tachiyomi</string>
+    <string name="information_webview_required">Το WebView απαιτείται για τη λειτουργία της εφαρμογής</string>
     <string name="notification_chapters_single_and_more">Κεφάλαιο %1$s και %2$d ακόμη</string>
     <string name="notification_chapters_multiple">Κεφάλαια %1$s</string>
     <string name="notification_chapters_single">Κεφάλαιο %1$s</string>
@@ -334,7 +333,6 @@
         <item quantity="one">Διαθέσιμη ενημέρωση επέκτασης</item>
         <item quantity="other">%d διαθέσιμες ενημερώσεις επεκτάσεων</item>
     </plurals>
-    <string name="http_error_hint">Ελέγξτε τον ιστότοπο στο WebView</string>
     <string name="logout_success">Έχετε αποσυνδεθεί</string>
     <string name="logout">Αποσύνδεση</string>
     <string name="logout_title">Αποσύνδεση από %1$s;</string>
@@ -385,7 +383,6 @@
     <string name="action_view_chapters">Προβολή κεφαλαίων</string>
     <string name="action_sort_latest_chapter">Νεότερο κεφάλαιο</string>
     <string name="action_menu">Μενού</string>
-    <string name="unlock_app">Ξεκλειδώστε το Tachiyomi</string>
     <string name="label_downloaded_only">Ληφθέντα μόνο</string>
     <string name="label_sources">Πηγές</string>
     <string name="action_oldest">Παλαιότερο</string>
@@ -395,7 +392,6 @@
         <item quantity="other">Κεφάλαια %1$s και %2$d ακόμη</item>
     </plurals>
     <string name="downloaded_only_summary">Φιλτράρει όλες τις καταχωρήσεις στη βιβλιοθήκη σας</string>
-    <string name="pref_search_pinned_sources_only">Αναζήτηση μόνο καρφιτσωμένων πηγών στην καθολική αναζήτηση</string>
     <plurals name="download_queue_summary">
         <item quantity="one">%1$s που απομένει</item>
         <item quantity="other">%1$s που απομένουν</item>
@@ -415,7 +411,7 @@
     </plurals>
     <string name="tracking_info">Μονόδρομος συγχρονισμός για ενημέρωση των υπηρεσιών παρακολούθησης προόδου κεφαλαίων. Ρυθμίστε την παρακολούθηση για μεμονωμένες καταχωρήσεις από το κουμπί παρακολούθησης τους.</string>
     <string name="pref_refresh_library_covers">Ανανέωση εξώφυλλων βιβλιοθήκης</string>
-    <string name="unofficial_extension_message">Αυτή η επέκταση δεν προέρχεται από την επίσημη λίστα επεκτάσεων Tachiyomi.</string>
+    <string name="unofficial_extension_message">Αυτή η επέκταση δεν προέρχεται από την επίσημη λίστα.</string>
     <string name="ext_unofficial">Ανεπίσημη</string>
     <string name="sort_by_upload_date">Από ημερομηνία μεταφόρτωσης</string>
     <string name="label_data">Δεδομένα</string>
@@ -539,10 +535,10 @@
     <string name="pref_create_folder_per_manga_summary">Δημιουργεί φακέλους σύμφωνα με τον τίτλο των καταχωρήσεων</string>
     <string name="pref_create_folder_per_manga">Αποθήκευση σελίδων σε ξεχωριστούς φακέλους</string>
     <string name="pref_reader_actions">Ενέργειες</string>
-    <string name="rotation_type">Τύπος περιστροφής</string>
+    <string name="rotation_type">Περιστροφή</string>
     <string name="pref_grayscale">Κλίμακα του γκρι</string>
     <string name="notification_incognito_text">Απενεργοποίηση λειτουργίας ανώνυμης περιήγησης</string>
-    <string name="automatic_background">Αυτόματα</string>
+    <string name="automatic_background">Αυτόματο</string>
     <string name="cancel_all_for_series">Ακύρωση όλων για αυτήν τη σειρά</string>
     <string name="error_no_match">Δεν βρέθηκε αντιστοιχία</string>
     <string name="source_unsupported">Η πηγή δεν υποστηρίζεται</string>
@@ -590,15 +586,10 @@
         <item quantity="other">%1$d μέρες πριν</item>
     </plurals>
     <string name="pref_inverted_colors">Αντεστραμμένο</string>
-    <string name="pref_relative_time_long">Μακρύ (Σύντομη+, n ημέρες πριν)</string>
-    <string name="pref_relative_time_short">Σύντομη (Σήμερα, Χθες)</string>
-    <string name="pref_relative_format">Σχετικές χρονικές σημάνσεις</string>
-    <string name="recently">Πρόσφατα</string>
     <string name="relative_time_today">Σήμερα</string>
     <string name="theme_tealturquoise">Teal &amp; Τιρκουάζ</string>
     <string name="confirm_lock_change">Έλεγχος ταυτότητας για επιβεβαίωση αλλαγής</string>
     <string name="label_default">Προεπιλογή</string>
-    <string name="pref_category_timestamps">Χρονικές ενδείξεις</string>
     <string name="pref_category_appearance">Εμφάνιση</string>
     <string name="action_track">Παρακολούθηση</string>
     <string name="getting_started_guide">Οδηγός για τα πρώτα βήματα</string>
@@ -649,7 +640,7 @@
     <string name="channel_skipped">Παραλήφθηκαν</string>
     <string name="notification_update_skipped">%1$d ενημέρωση(εις) παραλείφθηκε(-αν)</string>
     <string name="rotation_reverse_portrait">Αντίστροφο πορτρέτο</string>
-    <string name="action_move_to_top_all_for_series">Μετακίνηση σειράς στην κορυφή</string>
+    <string name="action_move_to_top_all_for_series">Μετακίνηση σειράς προς τα πάνω</string>
     <string name="disabled_nav">Απενεργοποιημένο</string>
     <string name="update_check_fdroid_migration_info">Μια νέα έκδοση είναι διαθέσιμη από τις επίσημες κυκλοφορίες. Πατήστε για να μάθετε πώς να μεταβείτε από ανεπίσημες κυκλοφορίες του F-Droid.</string>
     <string name="error_saving_picture">Σφάλμα κατά την αποθήκευση της εικόνας</string>
@@ -658,7 +649,6 @@
     <string name="webview_data_deleted">Τα δεδομένα WebView διαγράφηκαν</string>
     <string name="pref_clear_webview_data">Διαγραφή δεδομένων WebView</string>
     <string name="action_close">Κλείσιμο</string>
-    <string name="battery_not_low">Όταν η μπαταρία δεν είναι χαμηλή</string>
     <string name="source_filter_empty_screen">Δε βρέθηκε εγκατεστημένη πηγή</string>
     <string name="action_sort_unread_count">Αριθμός μη αναγνωσμένων</string>
     <string name="action_sort_last_manga_update">Τελευταίος έλεγχος ενημέρωσης</string>
@@ -800,11 +790,6 @@
     <string name="action_filter_interval_passed">Πέρασε την περίοδο ελέγχου</string>
     <string name="pref_update_only_in_release_period">Εκτός αναμενόμενης περιόδου κυκλοφορίας</string>
     <string name="intervals_header">Διαστήματα</string>
-    <plurals name="pref_update_release_following_days">
-        <item quantity="one">%d ημέρα μετά</item>
-        <item quantity="other">%d ημέρες μετά</item>
-    </plurals>
-    <string name="pref_update_release_grace_period_info">Συνιστάται χαμηλή περίοδος χάριτος για την ελαχιστοποίηση της πίεσης στις πηγές. Όσο περισσότεροι έλεγχοι για μια καταχώρηση παραλείπονται, τόσο μεγαλύτερο θα είναι το διάστημα μεταξύ των ελέγχων με μέγιστο όριο τις 28 ημέρες.</string>
     <plurals name="day">
         <item quantity="one">1 ημέρα</item>
         <item quantity="other">%d ημέρες</item>
@@ -813,12 +798,6 @@
     <string name="manga_display_modified_interval_title">Ρύθμιση για ενημέρωση κάθε</string>
     <string name="action_filter_interval_long">Ανάκτηση μηνιαίως (28 ημέρες)</string>
     <string name="action_sort_next_updated">Επόμενη αναμενόμενη ενημέρωση</string>
-    <plurals name="pref_update_release_leading_days">
-        <item quantity="one">%d ημέρα πριν</item>
-        <item quantity="other">%d ημέρες πριν</item>
-    </plurals>
-    <string name="pref_update_release_grace_period">Αναμενόμενη περίοδος χάριτος κυκλοφορίας</string>
-    <string name="manga_modify_interval_title">Τροποποίηση διαστήματος</string>
     <string name="manga_modify_calculated_interval_title">Προσαρμογή διαστήματος</string>
     <string name="skipped_reason_not_in_release_period">Παραλείφθηκε επειδή δεν αναμενόταν κυκλοφορία σήμερα</string>
     <string name="action_ok">Εντάξει</string>
@@ -826,4 +805,17 @@
     <string name="track_delete_remote_text">Επίσης, αφαιρέστε από %s</string>
     <string name="track_delete_text">Αυτό θα καταργήσει την παρακολούθηση τοπικά.</string>
     <string name="delete_downloaded">Διαγραφή ληφθέντων</string>
+    <string name="has_results">Έχει αποτελέσματα</string>
+    <string name="syncing_library">Συγχρονισμός βιβλιοθήκης</string>
+    <string name="library_sync_complete">Ο συγχρονισμός βιβλιοθήκης ολοκληρώθηκε</string>
+    <string name="information_cloudflare_help">Πατήστε εδώ για βοήθεια με το Cloudflare</string>
+    <string name="download_cache_invalidated">Το ευρετήριο λήψεων ακυρώθηκε</string>
+    <string name="track_activity_name">Σύνδεση παρακολούθησης</string>
+    <string name="create_backup_file_error">Δεν ήταν δυνατή η δημιουργία αντιγράφου ασφαλείας</string>
+    <string name="licensed_manga_chapters_error">Αδειοδοτημένο - Δεν υπάρχουν κεφάλαια προς εμφάνιση</string>
+    <string name="exception_unknown_host">Δεν μπορούσε να φτάσει το %s</string>
+    <string name="exception_http">HTTP %d, ελέγξτε την ιστοσελίδα στο WebView</string>
+    <string name="exception_offline">Δεν υπάρχει σύνδεση στο διαδίκτυο</string>
+    <string name="unlock_app_title">Ξεκλείδωμα %s</string>
+    <string name="action_move_to_bottom_all_for_series">Μετακίνηση σειράς προς τα κάτω</string>
 </resources>

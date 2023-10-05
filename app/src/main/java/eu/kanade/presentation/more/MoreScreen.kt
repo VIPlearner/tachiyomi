@@ -17,6 +17,7 @@ import androidx.compose.material.icons.outlined.Label
 import androidx.compose.material.icons.outlined.QueryStats
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.SettingsBackupRestore
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -31,7 +32,6 @@ import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.ui.more.DownloadQueueState
 import tachiyomi.core.Constants
 import tachiyomi.presentation.core.components.ScrollbarLazyColumn
-import tachiyomi.presentation.core.components.material.Divider
 import tachiyomi.presentation.core.components.material.Scaffold
 
 @Composable
@@ -62,7 +62,7 @@ fun MoreScreen(
                     WarningBanner(
                         textRes = R.string.fdroid_warning,
                         modifier = Modifier.clickable {
-                            uriHandler.openUri("https://tachiyomi.org/help/faq/#how-do-i-migrate-from-the-f-droid-version")
+                            uriHandler.openUri("https://tachiyomi.org/docs/faq/general#how-do-i-update-from-the-f-droid-builds")
                         },
                     )
                 }
@@ -94,7 +94,7 @@ fun MoreScreen(
                 )
             }
 
-            item { Divider() }
+            item { HorizontalDivider() }
 
             item {
                 val downloadQueueState = downloadQueueStateProvider()
@@ -108,11 +108,11 @@ fun MoreScreen(
                                 stringResource(R.string.paused)
                             } else {
                                 "${stringResource(R.string.paused)} • ${
-                                pluralStringResource(
-                                    id = R.plurals.download_queue_summary,
-                                    count = pending,
-                                    pending,
-                                )
+                                    pluralStringResource(
+                                        id = R.plurals.download_queue_summary,
+                                        count = pending,
+                                        pending,
+                                    )
                                 }"
                             }
                         }
@@ -147,7 +147,7 @@ fun MoreScreen(
                 )
             }
 
-            item { Divider() }
+            item { HorizontalDivider() }
 
             item {
                 TextPreferenceWidget(

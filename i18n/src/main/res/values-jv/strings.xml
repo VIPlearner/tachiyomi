@@ -81,7 +81,6 @@
     <string name="action_filter_unread">Durung kewoco</string>
     <string name="action_filter">Saringan</string>
     <string name="action_settings">Pengaturan</string>
-    <string name="unlock_app">Mbukak Tachiyomi</string>
     <string name="history">Sejarah</string>
     <string name="categories">Kategori</string>
     <string name="information_no_recent">Ora ono updetan anyar</string>
@@ -120,7 +119,6 @@
     <string name="action_filter_tracked">Kelacak</string>
     <string name="action_filter_bookmarked">Diwenehi tandha</string>
     <string name="action_menu">Menu</string>
-    <string name="confirm_exit">Pencet bali maneh kanggo metu</string>
     <string name="track">Ngelacak</string>
     <string name="chapters">Bab</string>
     <string name="information_empty_category">Sampeyan ora duwe kategori. Dhemok tombol tambah kanggo nggawe siji kategori kanggo ngatur perpustakaane sampeyan.</string>
@@ -180,11 +178,7 @@
     <string name="theme_monet">Dinamis</string>
     <string name="theme_greenapple">Ijo apel</string>
     <string name="action_faq_and_guides">Takon jawab lan panduan</string>
-    <string name="pref_category_timestamps">Stempel wektu</string>
-    <string name="pref_relative_time_short">Cendhak (Dina iki, Wingi)</string>
-    <string name="pref_relative_time_long">Dawa(Cendhak+, n dina kang rumiyin)</string>
     <string name="parental_controls_info">Iki ora nyegah ekstensi kang ora resmi utawa salah dilabeli kanggo nampilake konten NSFW (18+) ing aplikasi.</string>
-    <string name="recently">Nembe mawon</string>
     <string name="relative_time_today">Dinten puniki</string>
     <plurals name="relative_time">
         <item quantity="other">%1$d dinten kala-wingi</item>
@@ -258,14 +252,12 @@
     <string name="l_nav">Wangun L</string>
     <string name="action_sort_last_manga_update">Priksa nganyari pungkasan</string>
     <string name="action_sort_unread_count">Total gak diwoco</string>
-    <string name="pref_relative_format">Stempel wektu sing relatif</string>
     <string name="pref_category_library_update">Updatean umum</string>
     <string name="pref_library_update_interval">Updatean otomatis</string>
     <string name="lock_with_biometrics">Mbutuhake mbukak kunci</string>
     <string name="pref_library_update_refresh_metadata">Nganyari metadata otomatis</string>
     <string name="network_not_metered">Jaringan gak kebates tok</string>
     <string name="pref_library_update_manga_restriction">Lewati updatean judul</string>
-    <string name="battery_not_low">Pas baterai ora titik</string>
     <string name="pref_app_language">Bohoso aplikasi</string>
     <string name="untrusted_extension_message">Ekstensi iki ditandatangani nganggo sertifikat sing ora dipercaya lan ora diaktifake.
 \n

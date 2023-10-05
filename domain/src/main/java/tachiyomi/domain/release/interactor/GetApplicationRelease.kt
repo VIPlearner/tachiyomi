@@ -20,7 +20,10 @@ class GetApplicationRelease(
         val now = Instant.now()
 
         // Limit checks to once every 3 days at most
-        if (arguments.forceCheck.not() && now.isBefore(Instant.ofEpochMilli(lastChecked.get()).plus(3, ChronoUnit.DAYS))) {
+        if (arguments.forceCheck.not() && now.isBefore(
+                Instant.ofEpochMilli(lastChecked.get()).plus(3, ChronoUnit.DAYS),
+            )
+        ) {
             return Result.NoNewUpdate
         }
 
@@ -29,7 +32,12 @@ class GetApplicationRelease(
         lastChecked.set(now.toEpochMilli())
 
         // Check if latest version is different from current version
-        val isNewVersion = isNewVersion(arguments.isPreview, arguments.commitCount, arguments.versionName, release.version)
+        val isNewVersion = isNewVersion(
+            arguments.isPreview,
+            arguments.commitCount,
+            arguments.versionName,
+            release.version,
+        )
         return when {
             isNewVersion && arguments.isThirdParty -> Result.ThirdPartyInstallation
             isNewVersion -> Result.NewUpdate(release)
@@ -37,7 +45,12 @@ class GetApplicationRelease(
         }
     }
 
-    private fun isNewVersion(isPreview: Boolean, commitCount: Int, versionName: String, versionTag: String): Boolean {
+    private fun isNewVersion(
+        isPreview: Boolean,
+        commitCount: Int,
+        versionName: String,
+        versionTag: String,
+    ): Boolean {
         // Removes prefixes like "r" or "v"
         val newVersion = versionTag.replace("[^\\d.]".toRegex(), "")
         return if (isPreview) {
@@ -71,9 +84,9 @@ class GetApplicationRelease(
         val forceCheck: Boolean = false,
     )
 
-    sealed class Result {
-        data class NewUpdate(val release: Release) : Result()
-        data object NoNewUpdate : Result()
-        data object ThirdPartyInstallation : Result()
+    sealed interface Result {
+        data class NewUpdate(val release: Release) : Result
+        data object NoNewUpdate : Result
+        data object ThirdPartyInstallation : Result
     }
 }

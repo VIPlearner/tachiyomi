@@ -22,7 +22,6 @@
     <string name="label_extensions">ប្រភពម៊េងហ្គា</string>
     <string name="label_help">ជំនួយ</string>
     <string name="label_default">លំនាំដើម</string>
-    <string name="unlock_app">បើកតាឈិយ៉ូមិ</string>
     <string name="action_filter">ហ្វីលធឺ</string>
     <string name="action_filter_bookmarked">បានបញ្ចូលទៅក្នុងបណ្ណាល័យ</string>
     <string name="action_filter_tracked">បានដាក់ការតាមដានការអាន</string>
@@ -76,7 +75,6 @@
     <string name="information_empty_category">អ្នកពុំមានការទម្រៀបម៊េងហ្គាឡើយ។ ចុចប៊ូតុងសញ្ញាបូកដើម្បីទម្រៀបម៊េងហ្គាសម្រាប់បណ្ណាល័យរបស់អ្នក។</string>
     <string name="manga">ម៊េងហ្គា</string>
     <string name="confirm_lock_change">Authenticateដើម្បីបញ្ចាក់ពីការកែប្រែ</string>
-    <string name="confirm_exit">ចុចថយម្ដងទៀតដើម្បីចេញ</string>
     <string name="action_settings">ការកំណត់</string>
     <string name="action_menu">កន្លែងកំណត់</string>
     <string name="action_mark_previous_as_read">បញ្ចាក់ភាគមុនថាបានអាន</string>
@@ -134,8 +132,6 @@
     <string name="theme_tealturquoise">បៃតងខ្ចី</string>
     <string name="theme_yinyang">យីងនិងយ៉ាង</string>
     <string name="pref_dark_theme_pure_black">ខ្មៅដិត</string>
-    <string name="pref_category_timestamps">timestamps</string>
-    <string name="pref_relative_format">relative timestamps</string>
     <string name="pref_date_format">ទម្រង់ថ្ងៃខែ</string>
     <string name="pref_manage_notifications">កំណត់ការជូនដំណឹង</string>
     <string name="pref_category_security">សន្តិសុខនិងឯកជនភាព</string>
@@ -145,7 +141,6 @@
     <string name="secure_screen">ការពារអេក្រង់</string>
     <string name="pref_category_nsfw_content">ប្រភពមិនល្អ(១៨+)</string>
     <string name="pref_show_nsfw_source">បង្ហាញនៅក្នុងបញ្ចីប្រភព</string>
-    <string name="recently">ថ្មីៗ</string>
     <string name="relative_time_today">ថ្ងៃនេះ</string>
     <plurals name="relative_time">
         <item quantity="other">%1$d ថ្ងៃមុន</item>

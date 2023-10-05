@@ -148,7 +148,7 @@ object LibraryTab : Tab {
             snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         ) { contentPadding ->
             when {
-                state.isLoading -> LoadingScreen(modifier = Modifier.padding(contentPadding))
+                state.isLoading -> LoadingScreen(Modifier.padding(contentPadding))
                 state.searchQuery.isNullOrEmpty() && !state.hasActiveFilters && state.isLibraryEmpty -> {
                     val handler = LocalUriHandler.current
                     EmptyScreen(
@@ -158,7 +158,7 @@ object LibraryTab : Tab {
                             EmptyScreenAction(
                                 stringResId = R.string.getting_started_guide,
                                 icon = Icons.Outlined.HelpOutline,
-                                onClick = { handler.openUri("https://tachiyomi.org/help/guides/getting-started") },
+                                onClick = { handler.openUri("https://tachiyomi.org/docs/guides/getting-started") },
                             ),
                         ),
                     )

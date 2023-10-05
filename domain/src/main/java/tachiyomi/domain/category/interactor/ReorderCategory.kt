@@ -16,11 +16,9 @@ class ReorderCategory(
 
     private val mutex = Mutex()
 
-    suspend fun moveUp(category: Category): Result =
-        await(category, MoveTo.UP)
+    suspend fun moveUp(category: Category): Result = await(category, MoveTo.UP)
 
-    suspend fun moveDown(category: Category): Result =
-        await(category, MoveTo.DOWN)
+    suspend fun moveDown(category: Category): Result = await(category, MoveTo.DOWN)
 
     private suspend fun await(category: Category, moveTo: MoveTo) = withNonCancellableContext {
         mutex.withLock {
@@ -57,10 +55,10 @@ class ReorderCategory(
         }
     }
 
-    sealed class Result {
-        data object Success : Result()
-        data object Unchanged : Result()
-        data class InternalError(val error: Throwable) : Result()
+    sealed interface Result {
+        data object Success : Result
+        data object Unchanged : Result
+        data class InternalError(val error: Throwable) : Result
     }
 
     private enum class MoveTo {

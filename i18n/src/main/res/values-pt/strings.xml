@@ -359,7 +359,6 @@
     <string name="information_cloudflare_bypass_failure">Falha ao contornar o Cloudflare</string>
     <string name="information_webview_outdated">Por favor, atualize a app de WebView para melhor compatibilidade</string>
     <string name="channel_new_chapters">Atualizações de capítulos</string>
-    <string name="unlock_app">Desbloquear o Tachiyomi</string>
     <string name="secure_screen_summary">Ecrã seguro esconde os conteúdos da app durante a troca de apps e impedir capturas de ecrã</string>
     <string name="pref_category_display">Visualização</string>
     <string name="notification_chapters_single_and_more">Capítulo %1$s e %2$d mais</string>
@@ -400,7 +399,6 @@
     </plurals>
     <string name="updating_library">Atualizando biblioteca</string>
     <string name="pinned_sources">Fixado</string>
-    <string name="http_error_hint">Verifique o sítio web no WebView</string>
     <string name="pref_webtoon_side_padding">Preenchimento lateral</string>
     <string name="pref_category_reading">Lendo</string>
     <string name="vertical_plus_viewer">Página longa com espaços</string>
@@ -415,7 +413,6 @@
     <string name="restore_in_progress">Restauro já em progresso</string>
     <string name="creating_backup_error">Cópia de segurança falhou</string>
     <string name="backup_in_progress">Cópia de segurança já em progresso</string>
-    <string name="confirm_exit">Pressione novamente para sair</string>
     <string name="label_downloaded_only">Apenas transferidos</string>
     <string name="information_webview_required">WebView é necessária para Tachiyomi</string>
     <string name="recent_manga_time">Cap. %1$s - %2$s</string>
@@ -430,7 +427,6 @@
     <string name="licenses">Licenças de código aberto</string>
     <string name="downloaded_only_summary">Filtra todos os itens nasua biblioteca</string>
     <string name="restore_duration">%02d min, %02d seg</string>
-    <string name="pref_search_pinned_sources_only">Pesquise apenas fontes fixadas na pesquisa global</string>
     <plurals name="download_queue_summary">
         <item quantity="one">%1$s restante</item>
         <item quantity="many">%1$s restantes</item>
@@ -621,9 +617,6 @@
     <string name="pref_library_update_refresh_trackers_summary">Atualizar monitorizadores ao atualizar biblioteca</string>
     <string name="getting_started_guide">Guia de introdução</string>
     <string name="theme_tealturquoise">Azul-petróleo e Turquesa</string>
-    <string name="pref_relative_time_long">Longo (Curto+, n dias atrás)</string>
-    <string name="pref_relative_time_short">Curto (Hoje, Ontem)</string>
-    <string name="recently">Recentemente</string>
     <plurals name="relative_time">
         <item quantity="one">Ontem</item>
         <item quantity="many">Há %1$d dias</item>
@@ -670,8 +663,6 @@
     <string name="ext_installer_pref">Instalador</string>
     <string name="ext_installer_legacy">Legado</string>
     <string name="ext_installer_shizuku_stopped">O Shizuku não está em execução</string>
-    <string name="pref_category_timestamps">Data e hora</string>
-    <string name="pref_relative_format">Data e hora relativas</string>
     <string name="help_translate">Ajude a traduzir</string>
     <string name="pref_highest">Mais alta</string>
     <string name="on_hiatus">Em hiato</string>
@@ -682,7 +673,6 @@
     <string name="disabled_nav">Desativado</string>
     <string name="action_display_cover_only_grid">Grelha apenas de capas</string>
     <string name="action_close">Fechar</string>
-    <string name="battery_not_low">Quando a bateria não está fraca</string>
     <string name="action_move_to_top_all_for_series">Mover séries para o topo</string>
     <string name="skipped_reason_completed">Ignorado porque a séria está completa</string>
     <string name="skipped_reason_not_started">Ignorado porque nenhum capítulo foi lido</string>
@@ -838,7 +828,6 @@
     <string name="action_set_interval">Definir intervalo</string>
     <string name="action_filter_interval_long">Buscar mensalmente (28 dias)</string>
     <string name="pref_update_only_in_release_period">Fora do período esperado de lançamento</string>
-    <string name="pref_update_release_grace_period">Período de tolerância de liberação esperado</string>
     <string name="pref_debug_info">Informações de depuração</string>
     <plurals name="day">
         <item quantity="one">Um dia</item>
@@ -852,17 +841,7 @@
     <string name="manga_display_interval_title">Estimado a cada</string>
     <string name="action_filter_interval_custom">Intervalo de busca customizado</string>
     <string name="action_sort_next_updated">Próxima atualização esperada</string>
-    <string name="manga_modify_interval_title">Modificar intervalo</string>
     <string name="manga_display_modified_interval_title">Definido para atualizar a cada</string>
     <string name="skipped_reason_not_in_release_period">Pulado, pois nenhum lançamento é esperado para hoje</string>
-    <plurals name="pref_update_release_following_days">
-        <item quantity="one">%d dia depois</item>
-        <item quantity="many">%d dias depois</item>
-        <item quantity="other">%d dias depois</item>
-    </plurals>
-    <plurals name="pref_update_release_leading_days">
-        <item quantity="one">%d dia atrás</item>
-        <item quantity="many">%d dias atrás</item>
-        <item quantity="other">%d dias atrás</item>
-    </plurals>
+    <string name="delete_downloaded">Deletar dowloand</string>
 </resources>

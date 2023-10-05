@@ -60,12 +60,12 @@ class UpdatesScreenModel(
     private val libraryPreferences: LibraryPreferences = Injekt.get(),
     val snackbarHostState: SnackbarHostState = SnackbarHostState(),
     uiPreferences: UiPreferences = Injekt.get(),
-) : StateScreenModel<UpdatesState>(UpdatesState()) {
+) : StateScreenModel<UpdatesScreenModel.State>(State()) {
 
     private val _events: Channel<Event> = Channel(Int.MAX_VALUE)
     val events: Flow<Event> = _events.receiveAsFlow()
 
-    val lastUpdated by libraryPreferences.libraryUpdateLastTimestamp().asState(coroutineScope)
+    val lastUpdated by libraryPreferences.lastUpdatedTimestamp().asState(coroutineScope)
     val relativeTime by uiPreferences.relativeTime().asState(coroutineScope)
 
     // First and last selected index in list
@@ -83,7 +83,8 @@ class UpdatesScreenModel(
             combine(
                 getUpdates.subscribe(calendar).distinctUntilChanged(),
                 downloadCache.changes,
-            ) { updates, _ -> updates }
+                downloadManager.queueState,
+            ) { updates, _, _ -> updates }
                 .catch {
                     logcat(LogPriority.ERROR, it)
                     _events.send(Event.InternalError)
@@ -366,46 +367,46 @@ class UpdatesScreenModel(
         libraryPreferences.newUpdatesCount().set(0)
     }
 
-    sealed class Dialog {
-        data class DeleteConfirmation(val toDelete: List<UpdatesItem>) : Dialog()
-    }
+    @Immutable
+    data class State(
+        val isLoading: Boolean = true,
+        val items: List<UpdatesItem> = emptyList(),
+        val dialog: Dialog? = null,
+    ) {
+        val selected = items.filter { it.selected }
+        val selectionMode = selected.isNotEmpty()
 
-    sealed class Event {
-        data object InternalError : Event()
-        data class LibraryUpdateTriggered(val started: Boolean) : Event()
-    }
-}
+        fun getUiModel(context: Context, relativeTime: Boolean): List<UpdatesUiModel> {
+            val dateFormat by mutableStateOf(UiPreferences.dateFormat(Injekt.get<UiPreferences>().dateFormat().get()))
 
-@Immutable
-data class UpdatesState(
-    val isLoading: Boolean = true,
-    val items: List<UpdatesItem> = emptyList(),
-    val dialog: UpdatesScreenModel.Dialog? = null,
-) {
-    val selected = items.filter { it.selected }
-    val selectionMode = selected.isNotEmpty()
-
-    fun getUiModel(context: Context, relativeTime: Int): List<UpdatesUiModel> {
-        val dateFormat by mutableStateOf(UiPreferences.dateFormat(Injekt.get<UiPreferences>().dateFormat().get()))
-
-        return items
-            .map { UpdatesUiModel.Item(it) }
-            .insertSeparators { before, after ->
-                val beforeDate = before?.item?.update?.dateFetch?.toDateKey() ?: Date(0)
-                val afterDate = after?.item?.update?.dateFetch?.toDateKey() ?: Date(0)
-                when {
-                    beforeDate.time != afterDate.time && afterDate.time != 0L -> {
-                        val text = afterDate.toRelativeString(
-                            context = context,
-                            range = relativeTime,
-                            dateFormat = dateFormat,
-                        )
-                        UpdatesUiModel.Header(text)
+            return items
+                .map { UpdatesUiModel.Item(it) }
+                .insertSeparators { before, after ->
+                    val beforeDate = before?.item?.update?.dateFetch?.toDateKey() ?: Date(0)
+                    val afterDate = after?.item?.update?.dateFetch?.toDateKey() ?: Date(0)
+                    when {
+                        beforeDate.time != afterDate.time && afterDate.time != 0L -> {
+                            val text = afterDate.toRelativeString(
+                                context = context,
+                                relative = relativeTime,
+                                dateFormat = dateFormat,
+                            )
+                            UpdatesUiModel.Header(text)
+                        }
+                        // Return null to avoid adding a separator between two items.
+                        else -> null
                     }
-                    // Return null to avoid adding a separator between two items.
-                    else -> null
                 }
-            }
+        }
+    }
+
+    sealed interface Dialog {
+        data class DeleteConfirmation(val toDelete: List<UpdatesItem>) : Dialog
+    }
+
+    sealed interface Event {
+        data object InternalError : Event
+        data class LibraryUpdateTriggered(val started: Boolean) : Event
     }
 }
 
