@@ -24,11 +24,13 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -47,11 +49,9 @@ import eu.kanade.domain.track.model.toDbTrack
 import eu.kanade.presentation.components.DropdownMenu
 import eu.kanade.presentation.track.components.TrackLogoIcon
 import eu.kanade.tachiyomi.R
-import eu.kanade.tachiyomi.data.track.TrackService
+import eu.kanade.tachiyomi.data.track.Tracker
 import eu.kanade.tachiyomi.ui.manga.track.TrackItem
 import eu.kanade.tachiyomi.util.system.copyToClipboard
-import tachiyomi.presentation.core.components.material.Divider
-import tachiyomi.presentation.core.components.material.VerticalDivider
 import java.text.DateFormat
 
 private const val UnsetStatusTextAlpha = 0.5F
@@ -80,12 +80,12 @@ fun TrackInfoDialogHome(
     ) {
         trackItems.forEach { item ->
             if (item.track != null) {
-                val supportsScoring = item.service.getScoreList().isNotEmpty()
-                val supportsReadingDates = item.service.supportsReadingDates
+                val supportsScoring = item.tracker.getScoreList().isNotEmpty()
+                val supportsReadingDates = item.tracker.supportsReadingDates
                 TrackInfoItem(
                     title = item.track.title,
-                    service = item.service,
-                    status = item.service.getStatus(item.track.status.toInt()),
+                    tracker = item.tracker,
+                    status = item.tracker.getStatus(item.track.status.toInt()),
                     onStatusClick = { onStatusClick(item) },
                     chapters = "${item.track.lastChapterRead.toInt()}".let {
                         val totalChapters = item.track.totalChapters
@@ -97,8 +97,8 @@ fun TrackInfoDialogHome(
                         }
                     },
                     onChaptersClick = { onChapterClick(item) },
-                    score = item.service.displayScore(item.track.toDbTrack())
-                        .takeIf { supportsScoring && item.track.score != 0F },
+                    score = item.tracker.displayScore(item.track.toDbTrack())
+                        .takeIf { supportsScoring && item.track.score != 0.0 },
                     onScoreClick = { onScoreClick(item) }
                         .takeIf { supportsScoring },
                     startDate = remember(item.track.startDate) { dateFormat.format(item.track.startDate) }
@@ -115,7 +115,7 @@ fun TrackInfoDialogHome(
                 )
             } else {
                 TrackInfoItemEmpty(
-                    service = item.service,
+                    tracker = item.tracker,
                     onNewSearch = { onNewSearch(item) },
                 )
             }
@@ -126,7 +126,7 @@ fun TrackInfoDialogHome(
 @Composable
 private fun TrackInfoItem(
     title: String,
-    service: TrackService,
+    tracker: Tracker,
     @StringRes status: Int?,
     onStatusClick: () -> Unit,
     chapters: String,
@@ -147,7 +147,7 @@ private fun TrackInfoItem(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             TrackLogoIcon(
-                service = service,
+                tracker = tracker,
                 onClick = onOpenInBrowser,
             )
             Box(
@@ -211,7 +211,7 @@ private fun TrackInfoItem(
                 }
 
                 if (onStartDateClick != null && onEndDateClick != null) {
-                    Divider()
+                    HorizontalDivider()
                     Row(modifier = Modifier.height(IntrinsicSize.Min)) {
                         TrackDetailsItem(
                             modifier = Modifier.weight(1F),
@@ -260,13 +260,13 @@ private fun TrackDetailsItem(
 
 @Composable
 private fun TrackInfoItemEmpty(
-    service: TrackService,
+    tracker: Tracker,
     onNewSearch: () -> Unit,
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        TrackLogoIcon(service)
+        TrackLogoIcon(tracker)
         TextButton(
             onClick = onNewSearch,
             modifier = Modifier

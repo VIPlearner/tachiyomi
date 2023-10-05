@@ -108,13 +108,13 @@ private fun ColumnScope.FilterPage(
         onClick = { screenModel.toggleFilter(LibraryPreferences::filterCompleted) },
     )
 
-    val trackServices = remember { screenModel.trackServices }
-    when (trackServices.size) {
+    val trackers = remember { screenModel.trackers }
+    when (trackers.size) {
         0 -> {
             // No trackers
         }
         1 -> {
-            val service = trackServices[0]
+            val service = trackers[0]
             val filterTracker by screenModel.libraryPreferences.filterTracking(service.id.toInt()).collectAsState()
             TriStateItem(
                 label = stringResource(R.string.action_filter_tracked),
@@ -124,10 +124,10 @@ private fun ColumnScope.FilterPage(
         }
         else -> {
             HeadingItem(R.string.action_filter_tracked)
-            trackServices.map { service ->
+            trackers.map { service ->
                 val filterTracker by screenModel.libraryPreferences.filterTracking(service.id.toInt()).collectAsState()
                 TriStateItem(
-                    label = stringResource(service.nameRes()),
+                    label = service.name,
                     state = filterTracker,
                     onClick = { screenModel.toggleTracker(service.id.toInt()) },
                 )
@@ -180,7 +180,7 @@ private val displayModes = listOf(
 private fun ColumnScope.DisplayPage(
     screenModel: LibrarySettingsScreenModel,
 ) {
-    val displayMode by screenModel.libraryPreferences.libraryDisplayMode().collectAsState()
+    val displayMode by screenModel.libraryPreferences.displayMode().collectAsState()
     SettingsChipRow(R.string.action_display_mode) {
         displayModes.map { (titleRes, mode) ->
             FilterChip(

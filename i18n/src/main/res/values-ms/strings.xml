@@ -252,7 +252,7 @@
     <string name="untrusted_extension">Sambungan tak dipercayai</string>
     <string name="untrusted_extension_message">Sambungan ini telah ditandatangani dengan sijil tidak dipercayai dan ia tidak diaktifkan.
 \n
-\nSambungan yang berniat jahat kemungkinan membaca sebarang kelayakan log masuk yang di simpan dalam Tachiyomi atau melaksanakan kod sesuka hati.
+\nSambungan yang berniat jahat kemungkinan membaca sebarang kelayakan log masuk yang di simpan atau melaksanakan kod sesuka hati.
 \n
 \nDengan mempercayai sijil ini, anda menerima risiko tersebut.</string>
     <string name="pref_double_tap_anim_speed">Kelajuan animasi ketik dua kali</string>
@@ -327,7 +327,6 @@
     <string name="information_cloudflare_bypass_failure">Gagal untuk memintas Cloudflare</string>
     <string name="information_webview_outdated">Sila kemas kini aplikasi WebView untuk keserasian yang lebih baik</string>
     <string name="channel_new_chapters">Pengemaskinian bab</string>
-    <string name="unlock_app">Buka kunci Tachiyomi</string>
     <string name="secure_screen_summary">Skrin keselamatan menyembunyikan kandungan aplikasi apabila menukar aplikasi dan sekat tangkapan skrin</string>
     <string name="pref_category_display">Paparan</string>
     <plurals name="notification_chapters_generic">
@@ -358,7 +357,6 @@
         <item quantity="other">%d kemas kini sambungan tersedia</item>
     </plurals>
     <string name="channel_ext_updates">Kemas kini sambungan</string>
-    <string name="http_error_hint">Semak laman web dalam WebView</string>
     <string name="updating_library">Mengemas kini pustaka</string>
     <string name="pref_category_reading">Membaca</string>
     <string name="vertical_plus_viewer">Sebaris panjang dengan sela</string>
@@ -366,7 +364,7 @@
     <string name="action_select_inverse">Pilih songsang</string>
     <string name="label_sources">Sumber</string>
     <string name="pref_webtoon_side_padding">Tambahan sisi</string>
-    <string name="information_webview_required">WebView diperlukan untuk Tachiyomi</string>
+    <string name="information_webview_required">WebView diperlukan untuk aplikasi berfungsi</string>
     <string name="recent_manga_time">Bab %1$s - %2$s</string>
     <string name="add_tracking">Tambah penjejakan</string>
     <string name="manga_info_collapse">Tutup</string>
@@ -383,7 +381,6 @@
     <string name="backup_in_progress">Sandaran sedang dijalankan</string>
     <string name="action_unpin">Buang sematkan</string>
     <string name="action_pin">Sematkan</string>
-    <string name="confirm_exit">Tekan kembali sekali lagi untuk keluar</string>
     <string name="label_downloaded_only">Dimuat turun sahaja</string>
     <string name="last_used_source">Terakhir digunakan</string>
     <string name="check_for_updates">Semak untuk kemas kini</string>
@@ -393,7 +390,6 @@
     <plurals name="download_queue_summary">
         <item quantity="other">%1$s baki</item>
     </plurals>
-    <string name="pref_search_pinned_sources_only">Hanya cari sumber yang disematkan di dalam carian keseluruhan</string>
     <string name="gray_background">Kelabu</string>
     <string name="viewer">Mod membaca</string>
     <string name="pref_category_for_this_series">Untuk siri ini</string>
@@ -405,14 +401,14 @@
     <plurals name="restore_completed_message">
         <item quantity="other">Selesai dalam %1$s dengan %2$s ralat</item>
     </plurals>
-    <string name="tracking_info">Sinkron satu hala untuk kemas kini bab kemajuan dalam sistem penjejakan. Sediakan penjejakan untuk entri individu daripada butang penjejakan mereka.</string>
+    <string name="tracking_info">Menyelaras satu hala untuk kemas kini bab kemajuan dalam sistem penjejakan. Sediakan penjejakan untuk entri individu daripada butang penjejakan mereka.</string>
     <string name="pref_refresh_library_covers">Segar semula muka hadapan pustaka</string>
     <string name="sort_by_upload_date">Mengikut tarikh muat naik</string>
     <string name="label_data">Data</string>
     <string name="backup_restore_missing_sources">Tiada sumber:</string>
     <string name="invalid_backup_file_missing_manga">Sandaran tidak mengandungi apa-apa entri pustaka.</string>
     <string name="invalid_backup_file">Fail sandaran tidak sah</string>
-    <string name="unofficial_extension_message">Sambungan ini bukan daripada senarai sambungan Tachiyomi yang rasmi.</string>
+    <string name="unofficial_extension_message">Sambungan ini bukan daripada senarai yang rasmi.</string>
     <string name="ext_unofficial">Tidak rasmi</string>
     <string name="pref_library_update_refresh_metadata_summary">Semak muka hadapan dan tentang baharu bila mengemaskini pustaka</string>
     <string name="pref_library_update_refresh_metadata">Segar semula metadata secara automatik</string>
@@ -531,7 +527,7 @@
     <string name="rotation_type">Jenis putaran skrin</string>
     <string name="pref_grayscale">Skala kelabu</string>
     <string name="notification_incognito_text">Nyahdaya mod inkognito</string>
-    <string name="automatic_background">Automatik</string>
+    <string name="automatic_background">Auto</string>
     <string name="cancel_all_for_series">Batalkan semua untuk siri ini</string>
     <string name="error_no_match">Tiada padanan dijumpai</string>
     <string name="source_unsupported">Sumber tidak disokong</string>
@@ -574,11 +570,7 @@
     <string name="pref_highest">Tertinggi</string>
     <string name="pref_hide_threshold">Sensitiviti menyembunyikan menu apabila skrol</string>
     <string name="label_background_activity">Aktiviti latar belakang</string>
-    <string name="recently">Baru-baru ini</string>
     <string name="pref_inverted_colors">Songsang</string>
-    <string name="pref_relative_time_long">Panjang (Pendek+, n hari yang lalu)</string>
-    <string name="pref_relative_time_short">Pendek (Hari ini, Semalam)</string>
-    <string name="pref_relative_format">Cap masa relatif</string>
     <plurals name="relative_time">
         <item quantity="other">%1$d hari lalu</item>
     </plurals>
@@ -587,7 +579,6 @@
     <string name="confirm_lock_change">Sahkan untuk mengesahkan perubahan</string>
     <string name="label_default">Lalai</string>
     <string name="pref_category_appearance">Tampilan</string>
-    <string name="pref_category_timestamps">Cap Masa</string>
     <string name="action_track">Jejak</string>
     <string name="getting_started_guide">Panduan penggunaan</string>
     <string name="pref_tablet_ui_mode">UI tablet</string>
@@ -646,7 +637,6 @@
     <string name="pref_clear_webview_data">Hapus data WebView</string>
     <string name="webview_data_deleted">Data WebView dihapuskan</string>
     <string name="action_close">Tutup</string>
-    <string name="battery_not_low">Apabila bateri tidak lemah</string>
     <string name="source_filter_empty_screen">Tiada sumber dipasang ditemui</string>
     <string name="source_empty_screen">Tiada sumber ditemui</string>
     <string name="action_sort_unread_count">Bilangan belum dibaca</string>
@@ -705,7 +695,7 @@
     <string name="pref_library_summary">Kategori, Kemas kini keseluruhan, leret bab</string>
     <string name="pref_reader_summary">Mod membaca, paparan, navigasi</string>
     <string name="pref_downloads_summary">Muat turun automatik, muat turun maju</string>
-    <string name="pref_tracking_summary">Sinkron kemajuan satu hala, pertingkat sinkron</string>
+    <string name="pref_tracking_summary">Menyelaras kemajuan satu hala, pertingkat menyelaras</string>
     <string name="pref_backup_summary">Manual &amp; sandaran automatik</string>
     <string name="pref_advanced_summary">Kumpulan log kerosakan, pengoptimuman bateri</string>
     <string name="pref_security_summary">Kekunci aplikasi, skrin keselamatan</string>
@@ -784,28 +774,31 @@
     <string name="action_filter_interval_late">Lewat semak 10+</string>
     <string name="action_filter_interval_dropped">Diabaikan\? Lewat 20+ dan 2 bulan</string>
     <string name="action_sort_next_updated">Kemas kini seterusnya dijangka</string>
-    <plurals name="pref_update_release_following_days">
-        <item quantity="other">%d hari selepasnya</item>
-    </plurals>
     <string name="manga_display_modified_interval_title">Tetapkan untuk kemas kini setiap</string>
     <string name="skipped_reason_not_in_release_period">Dilangkau kerana tiada keluaran yang dijangkakan hari ini</string>
-    <string name="pref_update_release_grace_period">Dalam jangkaan tempoh tangguh keluaran</string>
     <string name="intervals_header">Jarak masa</string>
     <plurals name="day">
         <item quantity="other">%d hari</item>
     </plurals>
-    <string name="manga_modify_calculated_interval_title">Tersuai Jarak Masa</string>
-    <string name="manga_modify_interval_title">Ubahsuai jarak masa</string>
+    <string name="manga_modify_calculated_interval_title">Tersuai jarak masa</string>
     <string name="pref_update_only_in_release_period">Diluar jangkaan masa keluaran</string>
     <string name="manga_display_interval_title">Anggaran setiap</string>
-    <string name="pref_update_release_grace_period_info">Tempoh tangguh yang rendah adalah digalakkan untuk meminimumkan tekanan kepada sumber. Lebih banyak semakan pada entri yang terlepas, semakin lama jarak masa akan diambil untuk menyemak dengan 28 hari maksimum.</string>
-    <plurals name="pref_update_release_leading_days">
-        <item quantity="other">%d hari sebelumnya</item>
-    </plurals>
     <string name="action_filter_interval_passed">Melepasi tempoh semak</string>
     <string name="track_delete_title">Buang penjejakan %s\?</string>
     <string name="track_delete_text">Ini akan membuang penjejakan secara lokal.</string>
     <string name="action_ok">OK</string>
     <string name="track_delete_remote_text">Juga buang daripada %s</string>
     <string name="delete_downloaded">Padam dimuat turun</string>
+    <string name="has_results">Mempunyai hasil</string>
+    <string name="create_backup_file_error">Tidak boleh menghasilkan fail sandaran</string>
+    <string name="licensed_manga_chapters_error">Berlesen - Tiada bab untuk ditayangkan</string>
+    <string name="exception_unknown_host">Tidak dapat mencapai %s</string>
+    <string name="syncing_library">Menyelaraskan pustaka</string>
+    <string name="library_sync_complete">Pustaka selesai diselaraskan</string>
+    <string name="exception_offline">Tiada sambungan Internet</string>
+    <string name="track_activity_name">Log masuk penjejakan</string>
+    <string name="download_cache_invalidated">Indeks muat turun tidak sah</string>
+    <string name="information_cloudflare_help">Ketik di sini untuk bantuan berkenaan Cloudflare</string>
+    <string name="exception_http">HTTP %d, semak laman web dalam WebView</string>
+    <string name="unlock_app_title">Buka kunci %s</string>
 </resources>

@@ -4,15 +4,15 @@ import android.graphics.Color
 import androidx.annotation.StringRes
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.models.Track
-import eu.kanade.tachiyomi.data.track.DeletableTrackService
-import eu.kanade.tachiyomi.data.track.TrackService
+import eu.kanade.tachiyomi.data.track.DeletableTracker
+import eu.kanade.tachiyomi.data.track.Tracker
 import eu.kanade.tachiyomi.data.track.model.TrackSearch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import uy.kohesive.injekt.injectLazy
 import tachiyomi.domain.track.model.Track as DomainTrack
 
-class Anilist(id: Long) : TrackService(id), DeletableTrackService {
+class Anilist(id: Long) : Tracker(id, "AniList"), DeletableTracker {
 
     companion object {
         const val READING = 1
@@ -48,9 +48,6 @@ class Anilist(id: Long) : TrackService(id), DeletableTrackService {
             scorePreference.delete()
         }
     }
-
-    @StringRes
-    override fun nameRes() = R.string.tracker_anilist
 
     override fun getLogo() = R.drawable.ic_tracker_anilist
 
@@ -93,9 +90,9 @@ class Anilist(id: Long) : TrackService(id), DeletableTrackService {
         }
     }
 
-    override fun get10PointScore(track: DomainTrack): Float {
+    override fun get10PointScore(track: DomainTrack): Double {
         // Score is stored in 100 point format
-        return track.score / 10f
+        return track.score / 10.0
     }
 
     override fun indexToScore(index: Int): Float {

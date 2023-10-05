@@ -49,7 +49,6 @@
     <string name="secure_screen">Ekran i sigurt</string>
     <string name="pref_category_nsfw_content">Burimet NSFW (18+)</string>
     <string name="pref_show_nsfw_source">Shfaq në listat e burimeve dhe shtesave</string>
-    <string name="recently">Kohët e fundit</string>
     <string name="relative_time_today">Sot</string>
     <plurals name="relative_time">
         <item quantity="one">Dje</item>
@@ -117,11 +116,9 @@
     <string name="action_sort_alpha">Sipas alfabetit</string>
     <string name="action_sort_total">Totali i kapitujve</string>
     <string name="label_warning">Paralajmërim</string>
-    <string name="unlock_app">Zhblloko Tachiyomi</string>
     <string name="action_sort_count">Totali i hyrjeve</string>
     <string name="action_sort_last_read">Leximi i fundit</string>
     <string name="confirm_lock_change">Vërtetoni për të konfirmuar ndryshimin</string>
-    <string name="confirm_exit">Shtypni përsëri për të dalë</string>
     <string name="action_menu">Menuja</string>
     <string name="action_filter">Filtro</string>
     <string name="action_order_by_chapter_number">Sipas numrit të kapitullit</string>
@@ -180,16 +177,11 @@
     <string name="pref_app_theme">Tema e aplikacionit</string>
     <string name="theme_monet">Dinamik</string>
     <string name="theme_tako">Tako</string>
-    <string name="pref_relative_time_long">E gjatë (Shkurt+, n ditë më parë)</string>
-    <string name="pref_category_timestamps">Vula kohore</string>
-    <string name="pref_relative_format">Vula kohore relative</string>
-    <string name="pref_relative_time_short">E shkurtër (sot, dje)</string>
     <string name="pref_date_format">Formati i datës</string>
     <string name="landscape">Peizazhi</string>
     <string name="secure_screen_summary">Ekrani i sigurt fsheh përmbajtjen e aplikacionit kur ndërron aplikacionet dhe bllokon screenshots</string>
     <string name="parental_controls_info">Kjo nuk parandalon shtesat jozyrtare ose potencialisht të shënuara gabimisht që të shfaqin përmbajtjen NSFW (18+) brenda aplikacionit.</string>
     <string name="portrait">Portret</string>
-    <string name="battery_not_low">Kur bateria nuk është e ulët</string>
     <string name="restrictions">Kufizimet: %s</string>
     <string name="pref_library_update_interval">Përditësimet automatike</string>
     <string name="update_6hour">Çdo 6 orë</string>
@@ -540,7 +532,6 @@
         <item quantity="one">Ofrohet përditësim i shtesës</item>
         <item quantity="other">Ofrohen %d përditësime shtesë</item>
     </plurals>
-    <string name="pref_search_pinned_sources_only">Kërko vetëm burime të fiksuara në kërkimin global</string>
     <string name="pref_create_backup">Krijo kopje rezervë</string>
     <string name="pref_create_backup_summ">Mund të përdoret për të rivendosur bibliotekën aktuale</string>
     <string name="pref_restore_backup">Rivendos kopjen rezervë</string>
@@ -601,7 +592,6 @@
     <string name="downloaded_chapters">Kapitujt e shkarkuar</string>
     <string name="tabs_header">Skedat</string>
     <string name="no_more_results">Nuk ka më rezultate</string>
-    <string name="http_error_hint">Kontrolloni faqen e internetit në WebView</string>
     <string name="local_source">Burimi lokal</string>
     <string name="other_source">Tjetër</string>
     <string name="pinned_sources">Fiksuar</string>

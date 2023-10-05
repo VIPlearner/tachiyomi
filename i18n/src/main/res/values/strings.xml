@@ -37,9 +37,8 @@
     <string name="label_local">Local</string>
     <string name="label_downloaded">Downloaded</string>
 
-    <string name="unlock_app">Unlock Tachiyomi</string>
+    <string name="unlock_app_title">Unlock %s</string>
     <string name="confirm_lock_change">Authenticate to confirm change</string>
-    <string name="confirm_exit">Press back again to exit</string>
 
     <!-- Actions -->
     <string name="action_settings">Settings</string>
@@ -138,6 +137,7 @@
     <string name="action_move_to_top">Move to top</string>
     <string name="action_move_to_top_all_for_series">Move series to top</string>
     <string name="action_move_to_bottom">Move to bottom</string>
+    <string name="action_move_to_bottom_all_for_series">Move series to bottom</string>
     <string name="action_install">Install</string>
     <string name="action_share">Share</string>
     <string name="action_save">Save</string>
@@ -201,10 +201,9 @@
     <string name="theme_yotsuba">Yotsuba</string>
     <string name="theme_tidalwave">Tidal Wave</string>
     <string name="pref_dark_theme_pure_black">Pure black dark mode</string>
-    <string name="pref_category_timestamps">Timestamps</string>
     <string name="pref_relative_format">Relative timestamps</string>
-    <string name="pref_relative_time_short">Short (Today, Yesterday)</string>
-    <string name="pref_relative_time_long">Long (Short+, n days ago)</string>
+    <!-- "Today" instead of "2023-12-31" -->
+    <string name="pref_relative_format_summary">\"%1$s\" instead of \"%2$s\"</string>
     <string name="pref_date_format">Date format</string>
 
     <string name="pref_manage_notifications">Manage notifications</string>
@@ -227,7 +226,6 @@
     <string name="pref_show_nsfw_source">Show in sources and extensions lists</string>
     <string name="parental_controls_info">This does not prevent unofficial or potentially incorrectly flagged extensions from surfacing NSFW (18+) content within the app.</string>
 
-    <string name="recently">Recently</string>
     <string name="relative_time_today">Today</string>
     <plurals name="relative_time">
         <item quantity="one">Yesterday</item>
@@ -254,7 +252,6 @@
     <string name="connected_to_wifi">Only on Wi-Fi</string>
     <string name="network_not_metered">Only on unmetered network</string>
     <string name="charging">When charging</string>
-    <string name="battery_not_low">When battery not low</string>
     <string name="restrictions">Restrictions: %s</string>
 
     <string name="pref_library_update_manga_restriction">Skip updating entries</string>
@@ -263,17 +260,6 @@
     <string name="pref_update_only_started">That haven\'t been started</string>
     <string name="pref_library_update_show_tab_badge">Show unread count on Updates icon</string>
     <string name="pref_update_only_in_release_period">Outside expected release period</string>
-
-    <string name="pref_update_release_grace_period">Expected release grace period</string>
-    <plurals name="pref_update_release_leading_days">
-        <item quantity="one">%d day before</item>
-        <item quantity="other">%d days before</item>
-    </plurals>
-    <plurals name="pref_update_release_following_days">
-        <item quantity="one">%d day after</item>
-        <item quantity="other">%d days after</item>
-    </plurals>
-    <string name="pref_update_release_grace_period_info">A low grace period is recommended to minimize stress on sources. The more checks for an entry that are missed, the longer the interval in between checks will be with a maximum of 28 days.</string>
 
     <string name="pref_library_update_refresh_metadata">Automatically refresh metadata</string>
     <string name="pref_library_update_refresh_metadata_summary">Check for new cover and details when updating library</string>
@@ -316,9 +302,9 @@
     <string name="ext_uninstall">Uninstall</string>
     <string name="ext_app_info">App info</string>
     <string name="untrusted_extension">Untrusted extension</string>
-    <string name="untrusted_extension_message">This extension was signed with an untrusted certificate and wasn\'t activated.\n\nA malicious extension could read any login credentials stored in Tachiyomi or execute arbitrary code.\n\nBy trusting this certificate you accept these risks.</string>
+    <string name="untrusted_extension_message">This extension was signed with an untrusted certificate and wasn\'t activated.\n\nA malicious extension could read any stored login credentials or execute arbitrary code.\n\nBy trusting this certificate you accept these risks.</string>
     <string name="obsolete_extension_message">This extension is no longer available. It may not function properly and can cause issues with the app. Uninstalling it is recommended.</string>
-    <string name="unofficial_extension_message">This extension is not from the official Tachiyomi extensions list.</string>
+    <string name="unofficial_extension_message">This extension is not from the official list.</string>
     <string name="extension_api_error">Failed to get extensions list</string>
     <string name="ext_info_version">Version</string>
     <string name="ext_info_language">Language</string>
@@ -330,6 +316,7 @@
     <string name="ext_installer_legacy">Legacy</string>
     <string name="ext_installer_packageinstaller" translatable="false">PackageInstaller</string>
     <string name="ext_installer_shizuku" translatable="false">Shizuku</string>
+    <string name="ext_installer_private" translatable="false">Private</string>
     <string name="ext_installer_shizuku_stopped">Shizuku is not running</string>
     <string name="ext_installer_shizuku_unavailable_dialog">Install and start Shizuku to use Shizuku as extension installer.</string>
 
@@ -418,8 +405,8 @@
     <string name="double_tap_anim_speed_0">No animation</string>
     <string name="double_tap_anim_speed_normal">Normal</string>
     <string name="double_tap_anim_speed_fast">Fast</string>
-    <string name="pref_rotation_type">Default rotation type</string>
-    <string name="rotation_type">Rotation type</string>
+    <string name="pref_rotation_type">Default rotation</string>
+    <string name="rotation_type">Rotation</string>
     <string name="rotation_free">Free</string>
     <string name="rotation_portrait">Portrait</string>
     <string name="rotation_reverse_portrait">Reverse portrait</string>
@@ -472,12 +459,13 @@
     <!-- Tracking section -->
     <string name="tracking_guide">Tracking guide</string>
     <string name="pref_auto_update_manga_sync">Update progress after reading</string>
-    <string name="services">Services</string>
-    <string name="tracking_info">One-way sync to update the chapter progress in tracking services. Set up tracking for individual entries from their tracking button.</string>
-    <string name="enhanced_services">Enhanced services</string>
+    <string name="services">Trackers</string>
+    <string name="tracking_info">One-way sync to update the chapter progress in external tracker services. Set up tracking for individual entries from their tracking button.</string>
+    <string name="enhanced_services">Enhanced trackers</string>
     <string name="enhanced_services_not_installed">Available but source not installed: %s</string>
-    <string name="enhanced_tracking_info">Services that provide enhanced features for specific sources. Entries are automatically tracked when added to your library.</string>
+    <string name="enhanced_tracking_info">Provides enhanced features for specific sources. Entries are automatically tracked when added to your library.</string>
     <string name="action_track">Track</string>
+    <string name="track_activity_name">Tracker login</string>
 
       <!-- Browse section -->
     <string name="pref_hide_in_library_items">Hide entries already in library</string>
@@ -509,12 +497,17 @@
     <string name="creating_backup_error">Backup failed</string>
     <string name="missing_storage_permission">Storage permissions not granted</string>
     <string name="empty_backup_error">No library entries to back up</string>
+    <string name="create_backup_file_error">Couldn\'t create a backup file</string>
     <string name="restore_miui_warning">Backup/restore may not function properly if MIUI Optimization is disabled.</string>
     <string name="restore_in_progress">Restore is already in progress</string>
     <string name="restoring_backup">Restoring backup</string>
     <string name="restoring_backup_error">Restoring backup failed</string>
     <string name="restoring_backup_canceled">Canceled restore</string>
     <string name="backup_info">You should keep copies of backups in other places as well.</string>
+
+    <!-- Sync section -->
+    <string name="syncing_library">Syncing library</string>
+    <string name="library_sync_complete">Library sync complete</string>
 
       <!-- Advanced section -->
     <string name="label_network">Network</string>
@@ -534,6 +527,7 @@
     <string name="pref_auto_clear_chapter_cache">Clear chapter cache on app launch</string>
     <string name="pref_invalidate_download_cache">Invalidate downloads index</string>
     <string name="pref_invalidate_download_cache_summary">Force app to recheck downloaded chapters</string>
+    <string name="download_cache_invalidated">Downloads index invalidated</string>
     <string name="pref_clear_database">Clear database</string>
     <string name="pref_clear_database_summary">Delete history for entries that are not saved in your library</string>
     <string name="clear_database_source_item_count">%1$d non-library entries in database</string>
@@ -615,8 +609,7 @@
     <!-- missing prompt after Compose rewrite #7901 -->
     <string name="no_more_results">No more results</string>
     <string name="no_results_found">No results found</string>
-    <!-- Do not translate "WebView" -->
-    <string name="http_error_hint">Check website in WebView</string>
+    <string name="licensed_manga_chapters_error">Licensed - No chapters to show</string>
     <string name="local_source">Local source</string>
     <string name="other_source">Other</string>
     <string name="last_used_source">Last used</string>
@@ -678,8 +671,7 @@
     <string name="display_mode_chapter">Chapter %1$s</string>
     <string name="manga_display_interval_title">Estimate every</string>
     <string name="manga_display_modified_interval_title">Set to update every</string>
-    <string name="manga_modify_interval_title">Modify interval</string>
-    <string name="manga_modify_calculated_interval_title">Customize Interval</string>
+    <string name="manga_modify_calculated_interval_title">Customize interval</string>
     <string name="chapter_downloading_progress">Downloading (%1$d/%2$d)</string>
     <string name="chapter_error">Error</string>
     <string name="chapter_paused">Paused</string>
@@ -708,15 +700,6 @@
     <string name="are_you_sure">Are you sure?</string>
 
     <!-- Tracking Screen -->
-    <string name="tracker_anilist" translatable="false">AniList</string>
-    <string name="tracker_myanimelist" translatable="false">MyAnimeList</string>
-    <string name="tracker_kitsu" translatable="false">Kitsu</string>
-    <string name="tracker_komga" translatable="false">Komga</string>
-    <string name="tracker_bangumi" translatable="false">Bangumi</string>
-    <string name="tracker_shikimori" translatable="false">Shikimori</string>
-    <string name="tracker_manga_updates" translatable="false">MangaUpdates</string>
-    <string name="tracker_kavita" translatable="false">Kavita</string>
-    <string name="tracker_suwayomi" translatable="false">Suwayomi</string>
     <string name="manga_tracking_tab">Tracking</string>
     <plurals name="num_trackers">
         <item quantity="one">%d tracker</item>
@@ -919,9 +902,10 @@
     <string name="information_empty_category">You have no categories. Tap the plus button to create one for organizing your library.</string>
     <string name="information_empty_category_dialog">You don\'t have any categories yet.</string>
     <string name="information_cloudflare_bypass_failure">Failed to bypass Cloudflare</string>
+    <string name="information_cloudflare_help">Tap here for help with Cloudflare</string>
     <string name="information_required_plain">*required</string>
     <!-- Do not translate "WebView" -->
-    <string name="information_webview_required">WebView is required for Tachiyomi</string>
+    <string name="information_webview_required">WebView is required for the app to function</string>
     <!-- Do not translate "WebView" -->
     <string name="information_webview_outdated">Please update the WebView app for better compatibility</string>
     <string name="chapter_settings_updated">Updated default chapter settings</string>
@@ -955,4 +939,10 @@
     <string name="appwidget_updates_description">See your recently updated library entries</string>
     <string name="appwidget_unavailable_locked">Widget not available when app lock is enabled</string>
     <string name="remove_manga">You are about to remove \"%s\" from your library</string>
+
+    <!-- Common exceptions -->
+    <!-- Do not translate "WebView" -->
+    <string name="exception_http">HTTP %d, check website in WebView</string>
+    <string name="exception_offline">No Internet connection</string>
+    <string name="exception_unknown_host">Couldn\'t reach %s</string>
 </resources>

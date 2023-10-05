@@ -63,7 +63,7 @@
     <string name="untrusted_extension">Nedůvěryhodné rozšíření</string>
     <string name="untrusted_extension_message">Toto rozšíření bylo podepsané nedůvěryhodným certifikátem a nebylo aktivované.
 \n
-\nŠkodlivé rozšíření může přečíst přihlašovací údaje uložené v Tachiyomi nebo spustit libovolný kód.
+\nŠkodlivé rozšíření může přečíst jakékoliv uložené přihlašovací údaje nebo spustit libovolný kód.
 \n
 \nDůvěřováním tomuto certifikátu přijímáte tato rizika.</string>
     <string name="pref_fullscreen">Celá obrazovka</string>
@@ -76,7 +76,7 @@
     <string name="black_background">Černá</string>
     <string name="left_to_right_viewer">Stránkované (zleva doprava)</string>
     <string name="right_to_left_viewer">Stránkované (zprava doleva)</string>
-    <string name="pref_rotation_type">Výchozí typ otáčení</string>
+    <string name="pref_rotation_type">Výchozí otáčení</string>
     <string name="rotation_free">Volné</string>
     <string name="rotation_force_portrait">Zamknuto na výšku</string>
     <string name="rotation_force_landscape">Zamknuto na šířku</string>
@@ -324,7 +324,6 @@
     <string name="action_newest">Nejnovější</string>
     <string name="action_view_chapters">Zobrazit kapitoly</string>
     <string name="action_sort_latest_chapter">Poslední kapitola</string>
-    <string name="unlock_app">Odemknout Tachiyomi</string>
     <string name="add_tracking">Přidat sledování</string>
     <string name="no_chapters_error">Nebyly nalezeny žádné kapitoly</string>
     <string name="set_chapter_settings_as_default">Nastavit jako výchozí</string>
@@ -347,7 +346,6 @@
     <string name="action_global_search_query">Hledat \"%1$s\" globálně</string>
     <string name="pinned_sources">Připnuté</string>
     <string name="last_used_source">Naposledy použitý</string>
-    <string name="http_error_hint">Zobrazit stránku ve WebView</string>
     <string name="tabs_header">Karty</string>
     <string name="downloaded_chapters">Stažené kapitoly</string>
     <string name="manga_from_library">Z knihovny</string>
@@ -409,7 +407,7 @@
     <string name="tapping_inverted_none">Žádné</string>
     <string name="ext_nsfw_warning">Zdroje z tohoto rozšíření mohou obsahovat NSFW (18+) obsah</string>
     <string name="ext_nsfw_short">18+</string>
-    <string name="unofficial_extension_message">Toto rozšíření není z oficiálního seznamu rozšíření pro Tachiyomi.</string>
+    <string name="unofficial_extension_message">Toto rozšíření není z oficiálního seznamu rozšíření.</string>
     <string name="ext_unofficial">Neoficiální</string>
     <plurals name="num_categories">
         <item quantity="one">%d kategorie</item>
@@ -445,7 +443,7 @@
     <string name="channel_progress">Postup</string>
     <string name="chapter_settings_updated">Výchozí nastavení kapitol aktualizováno</string>
     <string name="information_webview_outdated">Prosím aktualizujte aplikaci WebView pro lepší kompatibilitu</string>
-    <string name="information_webview_required">Je nutné mít nainstalovanou aplikaci WebView</string>
+    <string name="information_webview_required">Je nutné mít nainstalovanou aplikaci WebView pro správné fungování aplikace</string>
     <string name="information_cloudflare_bypass_failure">Nastala chyba při obcházení služby Cloudflare</string>
     <plurals name="update_check_notification_ext_updates">
         <item quantity="one">Je dostupná aktualizace rozšíření</item>
@@ -499,7 +497,6 @@
     <string name="action_search_settings">Nastavení vyhledávání</string>
     <string name="action_sort_date_added">Datum přidání</string>
     <string name="action_filter_tracked">Sledováno</string>
-    <string name="confirm_exit">Opětovným stisknutím tlačítka aplikaci opustíte</string>
     <string name="viewer">Režim čtení</string>
     <string name="pref_show_reading_mode">Ukazovat režim čtení</string>
     <string name="pref_category_for_this_series">Pro tuto sérii</string>
@@ -510,7 +507,6 @@
         <item quantity="other">%d sledovačů</item>
     </plurals>
     <string name="also_set_chapter_settings_for_library">Také nastavit pro všechny položky v mé knihovně</string>
-    <string name="pref_search_pinned_sources_only">V globálním vyhledávání prohledávejte pouze připnuté zdroje</string>
     <string name="pref_category_reading">Čtení</string>
     <string name="pref_show_reading_mode_summary">Při otevření čtečky krátce zobrazí aktuální režim</string>
     <string name="ext_updates_pending">Čekajících aktualizací</string>
@@ -542,7 +538,7 @@
     <string name="action_sort_chapter_fetch_date">Datum načtení kapitoly</string>
     <string name="rotation_landscape">Na šířku</string>
     <string name="rotation_portrait">Na výšku</string>
-    <string name="rotation_type">Typ otočení</string>
+    <string name="rotation_type">Otáčení</string>
     <string name="pref_create_folder_per_manga_summary">Vytváří složky podle názvu položky</string>
     <string name="pref_create_folder_per_manga">Uložit stránky do samostatných složek</string>
     <string name="pref_reader_actions">Akce</string>
@@ -550,7 +546,7 @@
     <string name="nav_zone_left">Vlevo</string>
     <string name="nav_zone_prev">Předchozí</string>
     <string name="notification_incognito_text">Zakázat anonymní režim</string>
-    <string name="automatic_background">Automaticky</string>
+    <string name="automatic_background">Auto</string>
     <string name="pref_grayscale">Odstíny šedé</string>
     <string name="cancel_all_for_series">Zrušit vše pro tuto sérii</string>
     <string name="error_no_match">Žádná shoda nenalezena</string>
@@ -603,11 +599,6 @@
         <item quantity="other">Před %1$d dny</item>
     </plurals>
     <string name="relative_time_today">Dnes</string>
-    <string name="recently">Nedávno</string>
-    <string name="pref_relative_time_long">Dlouhé (Krátké+, před n dny)</string>
-    <string name="pref_relative_time_short">Krátký (dnes, včera)</string>
-    <string name="pref_relative_format">Relativní časová razítka</string>
-    <string name="pref_category_timestamps">Časová razítka</string>
     <string name="theme_tealturquoise">Modrozelená a Tyrkysová</string>
     <string name="pref_category_appearance">Vzhled</string>
     <string name="confirm_lock_change">Potvrďte změnu ověřením</string>
@@ -691,7 +682,6 @@
     <string name="pref_navigate_pan">Posunutí širokých snímků</string>
     <string name="action_sort_unread_count">Počet nepřečtených</string>
     <string name="action_sort_last_manga_update">Poslední kontrola aktualizace</string>
-    <string name="battery_not_low">Když baterie není vybitá</string>
     <string name="cant_open_last_read_chapter">Nelze otevřít poslední přečtenou kapitolu</string>
     <string name="custom_cover">Vlastní obal</string>
     <string name="not_installed">Nenainstalováno</string>
@@ -816,27 +806,14 @@
     <string name="action_sort_next_updated">Další očekávaná aktualizace</string>
     <string name="manga_display_interval_title">Odhadovat každý</string>
     <string name="manga_display_modified_interval_title">Nastavit aktualizaci každých</string>
-    <string name="manga_modify_interval_title">Upravit interval</string>
     <string name="action_set_interval">Nastavit interval</string>
     <string name="action_filter_interval_dropped">Opuštěný\? Pozdě 20+ a 2 měsíce</string>
-    <plurals name="pref_update_release_leading_days">
-        <item quantity="one">Před %d dnem</item>
-        <item quantity="few">Před %d dny</item>
-        <item quantity="other">před %d dny</item>
-    </plurals>
-    <plurals name="pref_update_release_following_days">
-        <item quantity="one">po %d dni</item>
-        <item quantity="few">po %d dnech</item>
-        <item quantity="other">po %d dnech</item>
-    </plurals>
     <plurals name="day">
         <item quantity="one">1 den</item>
         <item quantity="few">%d dny</item>
         <item quantity="other">%d dní</item>
     </plurals>
     <string name="pref_update_only_in_release_period">Mimo očekávané období vydání</string>
-    <string name="pref_update_release_grace_period_info">Pro minimalizaci zátěže zdrojů se doporučuje nízká doba odkladu. Čím více kontrol záznamu bude zmeškáno, tím delší bude interval mezi kontrolami, maximálně však 28 dní.</string>
-    <string name="pref_update_release_grace_period">Očekávané období tolerance vydání</string>
     <string name="intervals_header">Intervaly</string>
     <string name="skipped_reason_not_in_release_period">Přeskočeno, protože dnes nebylo očekáváno žádné vydání</string>
     <string name="track_delete_text">Tím se lokálně odstraní sledování.</string>
@@ -844,4 +821,17 @@
     <string name="action_ok">OK</string>
     <string name="track_delete_title">Odebrat sledování %s\?</string>
     <string name="delete_downloaded">Odstranit stažené</string>
+    <string name="has_results">Má výsledky</string>
+    <string name="syncing_library">Synchronizace knihovny</string>
+    <string name="library_sync_complete">Synchronizace knihovny dokončena</string>
+    <string name="track_activity_name">Sledování přihlášení</string>
+    <string name="information_cloudflare_help">Klepněte zde pro pomoc s Cloudflare</string>
+    <string name="download_cache_invalidated">Index stažených zneplatněn</string>
+    <string name="create_backup_file_error">Nelze vytvořit soubor zálohy</string>
+    <string name="licensed_manga_chapters_error">Licencováno - Žádné kapitoly k zobrazení</string>
+    <string name="exception_offline">Bez připojení k internetu</string>
+    <string name="exception_unknown_host">Nelze dosáhnout %s</string>
+    <string name="exception_http">HTTP %d, zkontrolovat web v WebView</string>
+    <string name="unlock_app_title">Odemknout %s</string>
+    <string name="action_move_to_bottom_all_for_series">Přesunout sérii na konec</string>
 </resources>

@@ -44,11 +44,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tachiyomi">
 
-        <!-- enable profiling by macrobenchmark -->
-        <profileable
-            android:shell="true"
-            tools:targetApi="q" />
-
         <activity
             android:name=".ui.main.MainActivity"
             android:launchMode="singleTop"
@@ -70,10 +65,10 @@
             android:exported="false" />
 
         <activity
-            android:name=".ui.main.DeepLinkActivity"
+            android:name=".ui.deeplink.DeepLinkActivity"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.NoDisplay"
-            android:label="@string/action_global_search"
+            android:label="@string/action_search"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -132,8 +127,8 @@
             android:exported="false" />
 
         <activity
-            android:name=".ui.setting.track.AnilistLoginActivity"
-            android:label="Anilist"
+            android:name=".ui.setting.track.TrackLoginActivity"
+            android:label="@string/track_activity_name"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -141,74 +136,18 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data
-                    android:host="anilist-auth"
-                    android:scheme="tachiyomi" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.setting.track.MyAnimeListLoginActivity"
-            android:label="MyAnimeList"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <data android:host="anilist-auth"/>
+                <data android:host="bangumi-auth"/>
+                <data android:host="myanimelist-auth"/>
+                <data android:host="shikimori-auth"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="myanimelist-auth"
-                    android:scheme="tachiyomi" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.setting.track.ShikimoriLoginActivity"
-            android:label="Shikimori"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="shikimori-auth"
-                    android:scheme="tachiyomi" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.setting.track.BangumiLoginActivity"
-            android:label="Bangumi"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="bangumi-auth"
-                    android:scheme="tachiyomi" />
+                <data android:scheme="tachiyomi"/>
             </intent-filter>
         </activity>
 
         <receiver
             android:name=".data.notification.NotificationReceiver"
             android:exported="false" />
-
-        <receiver
-            android:name="tachiyomi.presentation.widget.UpdatesGridGlanceReceiver"
-            android:enabled="@bool/glance_appwidget_available"
-            android:exported="false"
-            android:label="@string/label_recent_updates">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/updates_grid_glance_widget_info" />
-        </receiver>
 
         <service
             android:name=".data.download.DownloadService"
@@ -218,7 +157,8 @@
             android:name=".data.updater.AppUpdateService"
             android:exported="false" />
 
-        <service android:name=".extension.util.ExtensionInstallService"
+        <service
+            android:name=".extension.util.ExtensionInstallService"
             android:exported="false" />
 
         <service

@@ -57,12 +57,12 @@ import eu.kanade.presentation.manga.components.MangaBottomActionMenu
 import eu.kanade.presentation.manga.components.MangaChapterListItem
 import eu.kanade.presentation.manga.components.MangaInfoBox
 import eu.kanade.presentation.manga.components.MangaToolbar
+import eu.kanade.presentation.util.formatChapterNumber
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.download.model.Download
 import eu.kanade.tachiyomi.source.getNameForMangaInfo
 import eu.kanade.tachiyomi.ui.manga.ChapterItem
-import eu.kanade.tachiyomi.ui.manga.MangaScreenState
-import eu.kanade.tachiyomi.ui.manga.chapterDecimalFormat
+import eu.kanade.tachiyomi.ui.manga.MangaScreenModel
 import eu.kanade.tachiyomi.util.lang.toRelativeString
 import eu.kanade.tachiyomi.util.system.copyToClipboard
 import tachiyomi.domain.chapter.model.Chapter
@@ -82,9 +82,10 @@ import java.util.Date
 
 @Composable
 fun MangaScreen(
-    state: MangaScreenState.Success,
+    state: MangaScreenModel.State.Success,
     snackbarHostState: SnackbarHostState,
-    dateRelativeTime: Int,
+    fetchInterval: Int?,
+    dateRelativeTime: Boolean,
     dateFormat: DateFormat,
     isTabletUi: Boolean,
     chapterSwipeStartAction: LibraryPreferences.ChapterSwipeAction,
@@ -112,6 +113,7 @@ fun MangaScreen(
     onShareClicked: (() -> Unit)?,
     onDownloadActionClicked: ((DownloadAction) -> Unit)?,
     onEditCategoryClicked: (() -> Unit)?,
+    onEditFetchIntervalClicked: (() -> Unit)?,
     onMigrateClicked: (() -> Unit)?,
 
     // For bottom action menu
@@ -141,6 +143,7 @@ fun MangaScreen(
             snackbarHostState = snackbarHostState,
             dateRelativeTime = dateRelativeTime,
             dateFormat = dateFormat,
+            fetchInterval = fetchInterval,
             chapterSwipeStartAction = chapterSwipeStartAction,
             chapterSwipeEndAction = chapterSwipeEndAction,
             onBackClicked = onBackClicked,
@@ -160,6 +163,7 @@ fun MangaScreen(
             onShareClicked = onShareClicked,
             onDownloadActionClicked = onDownloadActionClicked,
             onEditCategoryClicked = onEditCategoryClicked,
+            onEditIntervalClicked = onEditFetchIntervalClicked,
             onMigrateClicked = onMigrateClicked,
             onMultiBookmarkClicked = onMultiBookmarkClicked,
             onMultiMarkAsReadClicked = onMultiMarkAsReadClicked,
@@ -178,6 +182,7 @@ fun MangaScreen(
             chapterSwipeStartAction = chapterSwipeStartAction,
             chapterSwipeEndAction = chapterSwipeEndAction,
             dateFormat = dateFormat,
+            fetchInterval = fetchInterval,
             onBackClicked = onBackClicked,
             onChapterClicked = onChapterClicked,
             onDownloadChapter = onDownloadChapter,
@@ -195,6 +200,7 @@ fun MangaScreen(
             onShareClicked = onShareClicked,
             onDownloadActionClicked = onDownloadActionClicked,
             onEditCategoryClicked = onEditCategoryClicked,
+            onEditIntervalClicked = onEditFetchIntervalClicked,
             onMigrateClicked = onMigrateClicked,
             onMultiBookmarkClicked = onMultiBookmarkClicked,
             onMultiMarkAsReadClicked = onMultiMarkAsReadClicked,
@@ -210,10 +216,11 @@ fun MangaScreen(
 
 @Composable
 private fun MangaScreenSmallImpl(
-    state: MangaScreenState.Success,
+    state: MangaScreenModel.State.Success,
     snackbarHostState: SnackbarHostState,
-    dateRelativeTime: Int,
+    dateRelativeTime: Boolean,
     dateFormat: DateFormat,
+    fetchInterval: Int?,
     chapterSwipeStartAction: LibraryPreferences.ChapterSwipeAction,
     chapterSwipeEndAction: LibraryPreferences.ChapterSwipeAction,
     onBackClicked: () -> Unit,
@@ -240,6 +247,7 @@ private fun MangaScreenSmallImpl(
     onShareClicked: (() -> Unit)?,
     onDownloadActionClicked: ((DownloadAction) -> Unit)?,
     onEditCategoryClicked: (() -> Unit)?,
+    onEditIntervalClicked: (() -> Unit)?,
     onMigrateClicked: (() -> Unit)?,
 
     // For bottom action menu
@@ -383,10 +391,13 @@ private fun MangaScreenSmallImpl(
                         MangaActionRow(
                             favorite = state.manga.favorite,
                             trackingCount = state.trackingCount,
+                            fetchInterval = fetchInterval,
+                            isUserIntervalMode = state.manga.fetchInterval < 0,
                             onAddToLibraryClicked = onAddToLibraryClicked,
                             onWebViewClicked = onWebViewClicked,
                             onWebViewLongClicked = onWebViewLongClicked,
                             onTrackingClicked = onTrackingClicked,
+                            onEditIntervalClicked = onEditIntervalClicked,
                             onEditCategory = onEditCategoryClicked,
                         )
                     }
@@ -436,10 +447,11 @@ private fun MangaScreenSmallImpl(
 
 @Composable
 fun MangaScreenLargeImpl(
-    state: MangaScreenState.Success,
+    state: MangaScreenModel.State.Success,
     snackbarHostState: SnackbarHostState,
-    dateRelativeTime: Int,
+    dateRelativeTime: Boolean,
     dateFormat: DateFormat,
+    fetchInterval: Int?,
     chapterSwipeStartAction: LibraryPreferences.ChapterSwipeAction,
     chapterSwipeEndAction: LibraryPreferences.ChapterSwipeAction,
     onBackClicked: () -> Unit,
@@ -466,6 +478,7 @@ fun MangaScreenLargeImpl(
     onShareClicked: (() -> Unit)?,
     onDownloadActionClicked: ((DownloadAction) -> Unit)?,
     onEditCategoryClicked: (() -> Unit)?,
+    onEditIntervalClicked: (() -> Unit)?,
     onMigrateClicked: (() -> Unit)?,
 
     // For bottom action menu
@@ -596,10 +609,13 @@ fun MangaScreenLargeImpl(
                         MangaActionRow(
                             favorite = state.manga.favorite,
                             trackingCount = state.trackingCount,
+                            fetchInterval = fetchInterval,
+                            isUserIntervalMode = state.manga.fetchInterval < 0,
                             onAddToLibraryClicked = onAddToLibraryClicked,
                             onWebViewClicked = onWebViewClicked,
                             onWebViewLongClicked = onWebViewLongClicked,
                             onTrackingClicked = onTrackingClicked,
+                            onEditIntervalClicked = onEditIntervalClicked,
                             onEditCategory = onEditCategoryClicked,
                         )
                         ExpandableMangaDescription(
@@ -701,7 +717,7 @@ private fun SharedMangaBottomActionMenu(
 private fun LazyListScope.sharedChapterItems(
     manga: Manga,
     chapters: List<ChapterItem>,
-    dateRelativeTime: Int,
+    dateRelativeTime: Boolean,
     dateFormat: DateFormat,
     chapterSwipeStartAction: LibraryPreferences.ChapterSwipeAction,
     chapterSwipeEndAction: LibraryPreferences.ChapterSwipeAction,
@@ -722,7 +738,7 @@ private fun LazyListScope.sharedChapterItems(
             title = if (manga.displayMode == Manga.CHAPTER_DISPLAY_NUMBER) {
                 stringResource(
                     R.string.display_mode_chapter,
-                    chapterDecimalFormat.format(chapterItem.chapter.chapterNumber.toDouble()),
+                    formatChapterNumber(chapterItem.chapter.chapterNumber),
                 )
             } else {
                 chapterItem.chapter.name

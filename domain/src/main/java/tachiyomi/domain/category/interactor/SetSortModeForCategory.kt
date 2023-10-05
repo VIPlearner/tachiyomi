@@ -23,12 +23,16 @@ class SetSortModeForCategory(
                 ),
             )
         } else {
-            preferences.librarySortingMode().set(LibrarySort(type, direction))
+            preferences.sortingMode().set(LibrarySort(type, direction))
             categoryRepository.updateAllFlags(flags)
         }
     }
 
-    suspend fun await(category: Category?, type: LibrarySort.Type, direction: LibrarySort.Direction) {
+    suspend fun await(
+        category: Category?,
+        type: LibrarySort.Type,
+        direction: LibrarySort.Direction,
+    ) {
         await(category?.id, type, direction)
     }
 }

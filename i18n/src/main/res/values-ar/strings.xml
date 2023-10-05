@@ -112,7 +112,7 @@
     <string name="zoom_start_left">اليسار</string>
     <string name="zoom_start_right">اليمين</string>
     <string name="zoom_start_center">المركز</string>
-    <string name="pref_rotation_type">نوع التدوير الافتراضي</string>
+    <string name="pref_rotation_type">التدوير الافتراضي</string>
     <string name="rotation_free">حر</string>
     <string name="rotation_force_portrait">الوضع الرأسي اﻹجباري</string>
     <string name="rotation_force_landscape">الوضع الأفقي الإجباري</string>
@@ -251,7 +251,7 @@
     <string name="untrusted_extension">إضافة ذات ريبة</string>
     <string name="untrusted_extension_message">هذه اﻹضافة موقَّعة بشهادة ذات ريبة ولم تفعَّل.
 \n
-\nيمكن لأي إضافة خبيثة قراءة بيانات اعتماد تسجيل الدخول المخزَّنة في Tachiyomi أو تنفيذ تعليمات برمجية عشوائية.
+\nيمكن لأي إضافة خبيثة قراءة بيانات اعتماد تسجيل الدخول المخزَّنة أو تنفيذ تعليمات برمجية عشوائية.
 \n
 \nأنت تقبل هذه المخاطر إن وثقت بالشهادة.</string>
     <string name="pref_double_tap_anim_speed">سرعة مؤثر النقر المزدوج</string>
@@ -297,7 +297,6 @@
     <string name="action_webview_refresh">تحديث</string>
     <string name="pref_category_library">المكتبة</string>
     <string name="label_more">المزيد</string>
-    <string name="unlock_app">افتح Tachiyomi</string>
     <string name="action_move_to_top">نقل إلى الأعلى</string>
     <string name="action_oldest">الأقدم</string>
     <string name="action_newest">الأَحدثْ</string>
@@ -346,11 +345,10 @@
     <string name="action_unpin">إلغاء التثبيت</string>
     <string name="action_pin">تثبيت</string>
     <string name="action_select_inverse">عكس التحديد</string>
-    <string name="confirm_exit">اضغط رجوع مرة أخرى للخروج</string>
     <string name="channel_ext_updates">تحديثات اﻹضافات</string>
     <string name="channel_new_chapters">تحديثات الفصول</string>
     <string name="information_webview_outdated">يرجى تحديث تطبيق WebView لتوافق أفضل</string>
-    <string name="information_webview_required">يتطلب Tachiyomi وجود WebView</string>
+    <string name="information_webview_required">إن وجود WebView لازم ليعمل التطبيق</string>
     <string name="information_cloudflare_bypass_failure">فشل في تجاوز Cloudflare</string>
     <plurals name="update_check_notification_ext_updates">
         <item quantity="zero">لايوجد تحديث للإضافة</item>
@@ -401,7 +399,6 @@
     <string name="local_source_help_guide">دليل استخدام المصادر المحلية</string>
     <string name="pinned_sources">المثبتة</string>
     <string name="last_used_source">آخر مصدر مُستخدم</string>
-    <string name="http_error_hint">التحقق من الموقع الإلكتروني في WebView</string>
     <string name="logout_success">تم تسجيل الخروج</string>
     <string name="logout">تسجيل الخروج</string>
     <string name="logout_title">تسجيل الخروج من %1$s؟</string>
@@ -415,7 +412,6 @@
         <item quantity="other">%1$s عناصر متبقية</item>
     </plurals>
     <string name="downloaded_only_summary">تصفية جميع الإدخالات في مكتبتك</string>
-    <string name="pref_search_pinned_sources_only">البحث فقط عن مصادر مثبتة في البحث العالمي</string>
     <string name="pref_webtoon_side_padding">الإزاحة الجانبية</string>
     <string name="vertical_plus_viewer">شريط طويل بين أجزائه فجوات</string>
     <string name="gray_background">رمادي</string>
@@ -443,7 +439,7 @@
     <string name="invalid_backup_file_missing_manga">النسخة الإحتياطية لا تحتوي على أيّة إدخالات المكتبة.</string>
     <string name="invalid_backup_file">ملفُّ النسخ الاحتياطيِّ غير صالح</string>
     <string name="tracking_info">مزامنة أحاديّة لتحديث تقدم الفصول في خدمات التتبع. قم بإعداد التتبع الخاص للإدخالات محدّدة من زر التتبع الخاص بها.</string>
-    <string name="unofficial_extension_message">هذه الإضافة ليست من قائمة إضافات Tachiyomi الرسمية.</string>
+    <string name="unofficial_extension_message">ليست هذه الإضافة من القائمة الرسمية.</string>
     <string name="ext_unofficial">غير رسمي</string>
     <string name="pref_library_update_refresh_metadata_summary">تحقق من وجود غلاف جديد وتفاصيل جديدة عند تحديث المكتبة</string>
     <string name="pref_library_update_refresh_metadata">تحديث البيانات الوصفية تلقائياً</string>
@@ -571,8 +567,8 @@
     <string name="action_sort_chapter_fetch_date">تاريخ الرفع</string>
     <string name="rotation_landscape">افقي</string>
     <string name="rotation_portrait">رأسي</string>
-    <string name="rotation_type">نوع التدوير</string>
-    <string name="automatic_background">تلقائيا</string>
+    <string name="rotation_type">التدوير</string>
+    <string name="automatic_background">تلقائيًّا</string>
     <string name="pref_create_folder_per_manga_summary">إنشاء مجلدات وفقا لعنوان الإدخالات</string>
     <string name="pref_create_folder_per_manga">حفظ الصفحات في مجلدات منفصلة</string>
     <string name="pref_reader_actions">الإجراءات</string>
@@ -629,7 +625,6 @@
     <string name="enhanced_tracking_info">الخدمات التي تقدم ميزات محسنة لأجل مصادر معينه. الإدخالات سوف يتم تتبعها عندما يتم إضافتها الي المكتبة.</string>
     <string name="enhanced_services">خدمات محسَّنة</string>
     <string name="relative_time_today">اليوم</string>
-    <string name="recently">مؤخراً</string>
     <string name="confirm_lock_change">المصادقة لتأكيد التغيير</string>
     <string name="label_default">الافتراضي</string>
     <string name="label_background_activity">الأنشطة التي تعمل في الخلفية</string>
@@ -641,18 +636,14 @@
         <item quantity="many">منذ %1$d أيام</item>
         <item quantity="other">منذ %1$d أيام</item>
     </plurals>
-    <string name="pref_relative_time_short">قصير (اليوم، الأمس)</string>
     <string name="action_track">تتبع</string>
     <string name="pref_inverted_colors">معكوس</string>
-    <string name="pref_relative_time_long">طويل (القصير، +منذ كم يوم)</string>
-    <string name="pref_relative_format">الوقت النسبي</string>
-    <string name="pref_category_timestamps">الوقت</string>
     <string name="theme_tealturquoise">ازرق مخضر و فيروز</string>
     <string name="pref_category_appearance">المظهر</string>
     <string name="getting_started_guide">دليل البدء</string>
     <string name="help_translate">ساعد بالترجمة</string>
     <string name="pref_tablet_ui_mode">واجهة مستخدم الجهاز اللوحي</string>
-    <string name="pref_remove_exclude_categories">فئات المستثناة</string>
+    <string name="pref_remove_exclude_categories">الفئات المستثناة</string>
     <string name="ext_installer_pref">المثبت</string>
     <string name="action_sort_count">إجمالي الإدخالات</string>
     <string name="label_warning">تحذير</string>
@@ -706,7 +697,6 @@
     <string name="update_check_open">فتح في GitHub</string>
     <string name="pref_clear_webview_data">احذف بيانات WebView</string>
     <string name="webview_data_deleted">حُذفت بيانات WebView</string>
-    <string name="battery_not_low">عند ارتفاع نسبة الشحن‌</string>
     <string name="source_filter_empty_screen">لا يوجد مصادر مثبته</string>
     <string name="source_empty_screen">لا يوجد مصدر</string>
     <string name="action_sort_unread_count">المانجا الغير مقروءة</string>
@@ -861,19 +851,8 @@
     <string name="action_filter_interval_dropped">ربما أُلغيت؟ ٢٠ التماسًا متأخرًا وشهران</string>
     <string name="manga_display_interval_title">قدِّر كلَّ</string>
     <string name="pref_update_only_in_release_period">ليس ضمن مدة الإصدار المتوقعة</string>
-    <string name="pref_update_release_grace_period">مدة سماح الإصدار المتوقعة</string>
-    <string name="pref_update_release_grace_period_info">مدة سماح قصيرة خير من مدة سماح طويلة، وذلك لتخفف الضغط على المصادر. وكلما تُلتمس مدخلة وليس لهذا تحديث تصير مدة الالتماس أطول، وأقصاها ٢٨ يومًا.</string>
     <string name="manga_modify_calculated_interval_title">خصِّص المدة</string>
-    <plurals name="pref_update_release_following_days">
-        <item quantity="zero">لا يوم بعد</item>
-        <item quantity="one">بعد يوم واحد</item>
-        <item quantity="two">بعد يومين</item>
-        <item quantity="few">بعد %d أيام</item>
-        <item quantity="many">بعد %d يومًا</item>
-        <item quantity="other">بعد %d يوم</item>
-    </plurals>
     <string name="skipped_reason_not_in_release_period">تُخُطِّيت بسبب عدم توقع صدور اليوم</string>
-    <string name="manga_modify_interval_title">عدِّل المدة</string>
     <string name="manga_display_modified_interval_title">عيِّن التحديث كلَّ</string>
     <plurals name="day">
         <item quantity="zero">لا يوم</item>
@@ -883,14 +862,6 @@
         <item quantity="many">%d يومًا</item>
         <item quantity="other">%d يوم</item>
     </plurals>
-    <plurals name="pref_update_release_leading_days">
-        <item quantity="zero">لا يوم قبل</item>
-        <item quantity="one">قبل يوم واحد</item>
-        <item quantity="two">قبل يومين</item>
-        <item quantity="few">قبل %d أيام</item>
-        <item quantity="many">قبل %d يومًا</item>
-        <item quantity="other">قبل %d يوم</item>
-    </plurals>
     <string name="intervals_header">المدة</string>
     <string name="action_sort_next_updated">التحديث المتوقع القادم</string>
     <string name="track_delete_title">أأزيل تتبع %s؟</string>
@@ -898,4 +869,17 @@
     <string name="action_ok">حسنًا</string>
     <string name="track_delete_remote_text">وكذلك أزله من %s</string>
     <string name="delete_downloaded">احذف ما نُزِّل</string>
+    <string name="syncing_library">تُزامن المكتبة</string>
+    <string name="library_sync_complete">انتهت مزامنة المكتبة</string>
+    <string name="has_results">وُجدت نتائج</string>
+    <string name="create_backup_file_error">تعذَّر إنشاء ملفِّ نسخ احتياطيِّ</string>
+    <string name="licensed_manga_chapters_error">مرخَّصة - لا فصول</string>
+    <string name="track_activity_name">ولوج التتبع</string>
+    <string name="download_cache_invalidated">أُفسد فهرس التنزيلات</string>
+    <string name="information_cloudflare_help">اضغط هنا تتحرَّ كلاودفلير</string>
+    <string name="exception_offline">لا اتصال بالإنترنت</string>
+    <string name="exception_http">خطأ HTTP %d، انظر في WebView</string>
+    <string name="exception_unknown_host">لم نصل %s</string>
+    <string name="unlock_app_title">افتح %s</string>
+    <string name="action_move_to_bottom_all_for_series">انقل السلسلة للقعر</string>
 </resources>

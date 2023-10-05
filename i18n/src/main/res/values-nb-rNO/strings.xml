@@ -108,7 +108,7 @@
     <string name="pref_skip_read_chapters">Hopp over kapitler markert som lest</string>
     <string name="pref_read_with_volume_keys">Lydstyrkejusteringstaster</string>
     <string name="pref_read_with_volume_keys_inverted">Inverter lydstyrketaster</string>
-    <string name="pref_read_with_long_tap">Vis ved langt trykk</string>
+    <string name="pref_read_with_long_tap">Vis handlinger ved langt trykk</string>
     <string name="pref_reader_theme">Bakgrunnsfarge</string>
     <string name="white_background">Hvit</string>
     <string name="black_background">Svart</string>
@@ -132,7 +132,7 @@
     <string name="double_tap_anim_speed_0">Ingen animasjon</string>
     <string name="double_tap_anim_speed_normal">Normal</string>
     <string name="double_tap_anim_speed_fast">Rask</string>
-    <string name="pref_rotation_type">Standard rotasjonstype</string>
+    <string name="pref_rotation_type">Standard rotasjon</string>
     <string name="rotation_free">Fri</string>
     <string name="rotation_force_portrait">Låst stående</string>
     <string name="rotation_force_landscape">Låst liggende</string>
@@ -259,9 +259,9 @@
     <string name="pref_library_columns">Rutenettstørrelse</string>
     <string name="untrusted_extension_message">Denne utvidelsen ble signert med et usikkert sertifikat, og ble dermed ikke aktivert
 \n
-\nEn skadelig utvidelse kan lese innloggingsdetaljer lagret i Tachiyomi, eller kjøre ukjent kode.
+\nEn skadelig utvidelse kan lese alle lagrede innloggingsdetaljer eller kjøre vilkårlig kode.
 \n
-\nVed å godta dette sertifikatet aksepterer du overstående risikoer.</string>
+\nVed å godta dette sertifikatet aksepterer du disse risikoene.</string>
     <string name="pref_double_tap_anim_speed">Animasjonshastighet ved dobbelklikk</string>
     <string name="pager_viewer">Sider</string>
     <string name="confirm_set_image_as_cover">Bruk dette bildet som omslag\?</string>
@@ -323,7 +323,6 @@
     </plurals>
     <string name="secure_screen">Sikker skjerm</string>
     <string name="channel_new_chapters">Kapitteloppdateringer</string>
-    <string name="unlock_app">Lås opp Tachiyomi</string>
     <string name="notification_chapters_single">Kapittel %1$s</string>
     <string name="email">E-postadresse</string>
     <string name="in_library">I biblioteket</string>
@@ -338,7 +337,7 @@
     <string name="action_menu">Meny</string>
     <string name="label_sources">Kilder</string>
     <string name="channel_ext_updates">Utvidelsesoppdateringer</string>
-    <string name="information_webview_required">Tachiyomi krever WebView</string>
+    <string name="information_webview_required">Appen fungerer ikke uten WebView</string>
     <string name="add_tracking">Legg til sporing</string>
     <string name="manga_info_collapse">Mindre</string>
     <string name="manga_info_expand">Mer</string>
@@ -351,7 +350,6 @@
     <string name="pref_skip_filtered_chapters">Hopp over filtrerte kapitler</string>
     <string name="hide_notification_content">Skjul merknadsinnhold</string>
     <string name="secure_screen_summary">Sikker skjerm skjuler programinnhold ved bytting av programmer og blokker skjermavbildninger</string>
-    <string name="confirm_exit">Trykk \"Tilbake\" igjen for å avslutte</string>
     <string name="label_downloaded_only">Kun nedlastet</string>
     <string name="ext_unofficial">Uoffisiell</string>
     <string name="viewer">Lesemodus</string>
@@ -394,7 +392,6 @@
     <string name="unknown_status">Ukjent status</string>
     <string name="unknown_author">Ukjent forfatter</string>
     <string name="local_source_help_guide">Lokal kildeguide</string>
-    <string name="http_error_hint">Sjekk nettsted i WebView</string>
     <plurals name="download_queue_summary">
         <item quantity="one">%1$s gjenstående</item>
         <item quantity="other">%1$s gjenstående</item>
@@ -413,9 +410,8 @@
         <item quantity="one">Gjort på %1$s med %2$s feil</item>
         <item quantity="other">Gjort på %1$s med %2$s feil</item>
     </plurals>
-    <string name="pref_search_pinned_sources_only">Søk kun festede kilder i globalt søk</string>
     <string name="pref_show_reading_mode">Vis lesemodus</string>
-    <string name="unofficial_extension_message">Denne utvidelsen kommer ikke fra den offisielle Tachiyomi-utvidelseslisten.</string>
+    <string name="unofficial_extension_message">Denne utvidelsen kommer ikke fra den offisielle listen.</string>
     <string name="action_disable">deaktivere</string>
     <string name="action_disable_all">deaktiver alle</string>
     <string name="action_enable_all">aktiver alle</string>
@@ -536,15 +532,11 @@
     <string name="update_check_eol">Denne Android-versjonen støttes ikke lenger</string>
     <string name="rotation_landscape">Liggende</string>
     <string name="rotation_portrait">Stående</string>
-    <string name="rotation_type">Rotasjonstype</string>
+    <string name="rotation_type">Rotasjon</string>
     <string name="pref_create_folder_per_manga_summary">Oppretter mapper i henhold til oppføringenes tittel</string>
     <string name="pref_create_folder_per_manga">Lagre sider i egne mapper</string>
     <string name="pref_reader_actions">Handlinger</string>
     <string name="pref_library_update_refresh_trackers">Oppdater trackere automatisk</string>
-    <string name="pref_relative_time_long">Lang (kort+, n dager siden)</string>
-    <string name="pref_relative_time_short">Kort (i dag, i går)</string>
-    <string name="pref_relative_format">Relative tidsstempler</string>
-    <string name="pref_category_timestamps">Tidsstempler</string>
     <string name="pref_dark_theme_pure_black">Helt svart</string>
     <string name="getting_started_guide">Oppstartsveiledning</string>
     <string name="information_empty_category_dialog">Du har ingen kategorier enda.</string>
@@ -579,7 +571,6 @@
         <item quantity="other">%1$d dager siden</item>
     </plurals>
     <string name="relative_time_today">I dag</string>
-    <string name="recently">Nylig</string>
     <string name="theme_monet">Dynamisk</string>
     <string name="pref_app_theme">Programdrakt</string>
     <string name="pref_category_appearance">Utseende</string>
@@ -592,7 +583,7 @@
     <string name="enhanced_tracking_info">Tjenester som gir forbedredet funksjoner for spesifikke kilder. Det holdes automatisk øye med oppføringer når de legges til i biblioteket ditt.</string>
     <string name="pref_tablet_ui_mode">Nettbrettsgrensesnitt</string>
     <string name="pref_hide_threshold">Følsomhet for å skjule menyen når du ruller</string>
-    <string name="categorized_display_settings">Innstillinger per kategori for sortering og visning</string>
+    <string name="categorized_display_settings">Innstillinger per kategori for sortering</string>
     <string name="theme_yinyang">Yin og yang</string>
     <string name="theme_tealturquoise">Blågrønn og turkis</string>
     <string name="theme_tako">Tako</string>
@@ -638,13 +629,13 @@
     <string name="library_errors_help">For hjelp til å fikse bibliotekoppdateringsfeil, se %1$s</string>
     <string name="action_display_cover_only_grid">Kun omslags-rutenett</string>
     <string name="pref_update_only_started">Som ikke er påbegynt</string>
-    <string name="pref_landscape_zoom">Zoom landskapsbilde</string>
+    <string name="pref_landscape_zoom">Zoom automatisk inn for brede bilder</string>
     <string name="pref_navigate_pan">Panorer brede bilder</string>
     <string name="clear_database_source_item_count">%1$d ikke-bibliotek oppføringer i databasen</string>
     <string name="action_move_to_top_all_for_series">Flytt serien til toppen</string>
     <string name="extension_api_error">Kunne ikke hente utvidelseslisten</string>
     <string name="rotation_reverse_portrait">Omvendt portrett</string>
-    <string name="pref_auto_clear_chapter_cache">Tøm kapittel hurtigbufferen ved lukking av appen</string>
+    <string name="pref_auto_clear_chapter_cache">Tøm kapittel hurtigbufferen ved oppstart av appen</string>
     <string name="notification_update_error">%1$d oppdatering(er) mislyktes</string>
     <string name="notification_update_skipped">%1$d oppdatering(er) hoppet over</string>
     <string name="learn_more">Trykk for å finne ut mer</string>
@@ -658,7 +649,6 @@
     <string name="action_close">Lukk</string>
     <string name="pref_clear_webview_data">Slett WebView data</string>
     <string name="webview_data_deleted">WebView data slettet</string>
-    <string name="battery_not_low">Batteri er ikke lavt</string>
     <string name="empty_screen">Vel, dette er pinlig</string>
     <string name="pref_tracking_summary">Enveis fremdriftssynkronisering, forbedret synkronisering</string>
     <string name="pref_browse_summary">Kilder, utvidelser, globalt søk</string>
@@ -670,7 +660,7 @@
     <string name="pref_reset_viewer_flags_success">Alle leserinnstillinger tilbakestilt</string>
     <string name="unknown_title">Ukjent tittel</string>
     <string name="invalid_location">Ugyldig plassering: %s</string>
-    <string name="download_ahead_info">Fungerer kun på oppføringer i biblioteket, og hvis det nåværende kapittelet samt det neste allerede er lastet ned</string>
+    <string name="download_ahead_info">Fungerer kun hvis det nåværende kapittelet + det neste allerede er lastet ned.</string>
     <string name="crash_screen_restart_application">Start applikasjonen på nytt</string>
     <string name="download_notifier_split_page_path_not_found">Kunne ikke finne filbanen til side %d</string>
     <string name="pref_security_summary">Applås, sikker skjerm</string>
@@ -720,7 +710,7 @@
     <string name="appwidget_unavailable_locked">Moduler er ikke tilgjengelig når applås er aktivert</string>
     <string name="pref_user_agent_string">Standard streng for brukeragent</string>
     <string name="pref_appearance_summary">Tema, dato- og klokkeslettformat</string>
-    <string name="pref_library_summary">Kategorier, global oppdatering</string>
+    <string name="pref_library_summary">Kategorier, global oppdatering, kapittelsveip</string>
     <string name="pref_downloads_summary">Automatisk nedlasting, last ned i forkant</string>
     <string name="pref_reader_summary">Lesemodus, skjerm, navigasjon</string>
     <string name="update_already_running">En oppdatering kjører allerede</string>
@@ -785,8 +775,47 @@
         <item quantity="one">Mangler %1$s kapittel</item>
         <item quantity="other">Mangler %1$s kapitler</item>
     </plurals>
-    <string name="pref_page_rotate_invert">Skift retning på roterte brede sider</string>
+    <string name="pref_page_rotate_invert">Vend orienteringen av roterte brede sider</string>
     <string name="pref_page_rotate">Roter brede sider slik at de passer</string>
     <string name="pref_debug_info">Debug info</string>
     <string name="pref_library_columns_per_row">%d per rad</string>
+    <plurals name="day">
+        <item quantity="one">%d dag</item>
+        <item quantity="other">%d dager</item>
+    </plurals>
+    <string name="manga_display_modified_interval_title">Sett til å oppdatere hver</string>
+    <string name="skipped_reason_not_in_release_period">Hoppet over fordi ingen utgivelse var forventet i dag</string>
+    <string name="pref_chapter_swipe">Kapittelsveip</string>
+    <string name="action_filter_interval_long">Oppdater månedlig (28 dager)</string>
+    <string name="action_set_interval">Sett intervall</string>
+    <string name="action_filter_interval_custom">Tilpasset oppdateringsintervall</string>
+    <string name="action_filter_interval_late">Sen 10+ sjekk</string>
+    <string name="action_filter_interval_passed">Passert sjekkperiode</string>
+    <string name="action_sort_next_updated">Neste forventede oppdatering</string>
+    <string name="action_filter_interval_dropped">Droppet\? Sen 20+ og 2 måneder</string>
+    <string name="pref_chapter_swipe_end">Sveip til høyre handling</string>
+    <string name="intervals_header">Intervaller</string>
+    <string name="manga_display_interval_title">Anslå hver</string>
+    <string name="delete_downloaded">Slett nedlastede</string>
+    <string name="pref_update_only_in_release_period">Utenfor forventet utgivelsesperiode</string>
+    <string name="pref_double_tap_zoom">Dobbelttrykk for å zoome</string>
+    <string name="pref_chapter_swipe_start">Sveip til venstre handling</string>
+    <string name="track_delete_title">Vil du fjerne sporing for %s\?</string>
+    <string name="track_delete_remote_text">Fjern fra %s også</string>
+    <string name="action_ok">OK</string>
+    <string name="manga_modify_calculated_interval_title">Tilpass intervall</string>
+    <string name="track_delete_text">Dette vil fjerne sporingen lokalt.</string>
+    <string name="has_results">Har resultater</string>
+    <string name="syncing_library">Synkroniserer biblioteket</string>
+    <string name="library_sync_complete">Biblioteksynkronisering fullført</string>
+    <string name="information_cloudflare_help">Trykk her for å få hjelp med Cloudflare</string>
+    <string name="download_cache_invalidated">Nedlastingsindeksen er ugyldiggjort</string>
+    <string name="create_backup_file_error">Kunne ikke opprette en backup-fil</string>
+    <string name="licensed_manga_chapters_error">Lisensiert - Ingen kapitler å vise</string>
+    <string name="track_activity_name">Sporingsinnlogging</string>
+    <string name="unlock_app_title">Lås opp %s</string>
+    <string name="action_move_to_bottom_all_for_series">Flytt serien til bunnen</string>
+    <string name="exception_offline">Ingen internettforbindelse</string>
+    <string name="exception_http">HTTP %d, sjekk nettsiden i WebView</string>
+    <string name="exception_unknown_host">Kunne ikke nå %s</string>
 </resources>
