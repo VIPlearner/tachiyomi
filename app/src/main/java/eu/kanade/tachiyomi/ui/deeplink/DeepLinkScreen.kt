@@ -5,7 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.core.content.ContextCompat.startActivity
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
@@ -14,6 +16,7 @@ import eu.kanade.presentation.util.Screen
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.ui.browse.source.globalsearch.GlobalSearchScreen
 import eu.kanade.tachiyomi.ui.manga.MangaScreen
+import eu.kanade.tachiyomi.ui.reader.ReaderActivity
 import tachiyomi.presentation.core.components.material.Scaffold
 import tachiyomi.presentation.core.screens.LoadingScreen
 
@@ -23,6 +26,7 @@ class DeepLinkScreen(
 
     @Composable
     override fun Content() {
+        val context = LocalContext.current
         val navigator = LocalNavigator.currentOrThrow
 
         val screenModel = rememberScreenModel {
@@ -46,12 +50,22 @@ class DeepLinkScreen(
                     navigator.replace(GlobalSearchScreen(query))
                 }
                 is DeepLinkScreenModel.State.Result -> {
-                    navigator.replace(
-                        MangaScreen(
-                            (state as DeepLinkScreenModel.State.Result).manga.id,
-                            true,
-                        ),
-                    )
+                    val resultState = state as DeepLinkScreenModel.State.Result
+                    if(resultState.chapterId == null){
+                        navigator.replace(
+                            MangaScreen(
+                                resultState.manga.id,
+                                true,
+                            ),
+                        )
+                    }else{
+                        navigator.pop()
+                        ReaderActivity.newIntent(
+                            context,
+                            resultState.manga.id,
+                            resultState.chapterId,
+                        ).also(context::startActivity)
+                    }
                 }
             }
         }
