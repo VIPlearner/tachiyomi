@@ -44,20 +44,15 @@ class DeepLinkScreenModel(
 
             val manga = source?.getManga(query)?.let { getMangaFromSManga(it, source.id) }
 
-            logcat{ "isChapterUri ${source?.isChapterUri(query)}" }
-
             val chapter = if(source?.isChapterUri(query) == true && manga != null){
                 source.getChapter(query)?.let { getChapterFromSChapter(it, manga, source) }
             }else null
-
-            logcat{ "chapter $chapter" }
 
             mutableState.update {
                 if (manga == null) {
                     State.NoResults
                 } else {
-                    val localManga = networkToLocalManga.await(manga)
-                    if(chapter == null) State.Result(localManga)
+                    if(chapter == null) State.Result(manga)
                     else {
                         State.Result(manga, chapter.id)
                     }
@@ -68,9 +63,8 @@ class DeepLinkScreenModel(
 
     private suspend fun getChapterFromSChapter(sChapter: SChapter, manga: Manga, source: Source): Chapter? {
         val localChapter = try{
-            getChapterByUrlAndMangaId.await(sChapter.url, manga.id)!!
+            getChapterByUrlAndMangaId.await(sChapter.url, manga.id)
         }catch (e: Exception){
-
             logcat(LogPriority.ERROR) { e.message ?: "Error getting chapter from url" }
             null
         }
