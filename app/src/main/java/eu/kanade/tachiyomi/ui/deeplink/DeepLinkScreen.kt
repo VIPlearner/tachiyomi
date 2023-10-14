@@ -7,7 +7,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.core.content.ContextCompat.startActivity
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
@@ -51,14 +50,14 @@ class DeepLinkScreen(
                 }
                 is DeepLinkScreenModel.State.Result -> {
                     val resultState = state as DeepLinkScreenModel.State.Result
-                    if(resultState.chapterId == null){
+                    if (resultState.chapterId == null) {
                         navigator.replace(
                             MangaScreen(
                                 resultState.manga.id,
                                 true,
                             ),
                         )
-                    }else{
+                    } else {
                         navigator.pop()
                         ReaderActivity.newIntent(
                             context,
