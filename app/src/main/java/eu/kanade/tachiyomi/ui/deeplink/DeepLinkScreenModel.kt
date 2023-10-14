@@ -6,7 +6,6 @@ import cafe.adriel.voyager.core.model.coroutineScope
 import eu.kanade.domain.chapter.interactor.SyncChaptersWithSource
 import eu.kanade.domain.manga.model.toDomainManga
 import eu.kanade.domain.manga.model.toSManga
-import eu.kanade.domain.source.service.SourcePreferences
 import eu.kanade.tachiyomi.source.Source
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
@@ -14,7 +13,6 @@ import eu.kanade.tachiyomi.source.online.ResolvableSource
 import eu.kanade.tachiyomi.source.online.UriType
 import kotlinx.coroutines.flow.update
 import tachiyomi.core.util.lang.launchIO
-import tachiyomi.core.util.system.logcat
 import tachiyomi.domain.chapter.interactor.GetChapterByUrlAndMangaId
 import tachiyomi.domain.chapter.model.Chapter
 import tachiyomi.domain.manga.interactor.GetMangaByUrlAndSourceId
@@ -27,7 +25,6 @@ import uy.kohesive.injekt.api.get
 class DeepLinkScreenModel(
     query: String = "",
     private val sourceManager: SourceManager = Injekt.get(),
-    private val sourcePreferences: SourcePreferences = Injekt.get(),
     private val networkToLocalManga: NetworkToLocalManga = Injekt.get(),
     private val getChapterByUrlAndMangaId: GetChapterByUrlAndMangaId = Injekt.get(),
     private val getMangaByUrlAndSourceId: GetMangaByUrlAndSourceId = Injekt.get(),
@@ -38,7 +35,6 @@ class DeepLinkScreenModel(
         coroutineScope.launchIO {
             val source = sourceManager.getCatalogueSources()
                 .filterIsInstance<ResolvableSource>()
-                .filter { it.id.toString() !in sourcePreferences.disabledSources().get() }
                 .firstOrNull { it.getUriType(query) != UriType.Unknown }
 
             val manga = source?.getManga(query)?.let {
